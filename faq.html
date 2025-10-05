@@ -12,6 +12,8 @@
             --color-secondary: #ffffff; /* Blanco */
             --color-accent: #5e35b1; /* Azul/Púrpura Vibrante */
             --color-light-gray: #f5f5f5; /* Gris Claro (Fondo cuerpo, acordeón) */
+            --color-success: #25d366; /* Verde para WhatsApp */
+            --color-text-dark: #333333; /* Texto principal oscuro */
         }
 
         /* Reset Básico y Tipografía */
@@ -20,6 +22,7 @@
             margin: 0;
             padding: 0;
             background-color: var(--color-secondary);
+            color: var(--color-text-dark); /* Añadido color de texto base */
         }
 
         a {
@@ -38,30 +41,25 @@
 
         .navbar-main {
             display: flex;
-            /* Usamos espacio entre elementos para empujar logo a izquierda e iconos a derecha */
-            justify-content: space-between; 
+            justify-content: space-between;
             align-items: center;
             background-color: var(--color-primary);
             padding: 10px 20px;
         }
 
         .navbar-main .logo {
-	    color: var(--color-secondary);
+            color: var(--color-secondary);
             font-size: 1.5em;
             font-weight: bold;
-            /* Damos un ancho fijo al logo para ayudar al centrado */
-            flex-basis: 150px; 
-	}
+            flex-basis: 150px;
+        }
 
         .navbar-search {
-           flex-grow: 1;
-            /* QUITAMOS margin: 0 auto; y usamos flexbox para el centrado */
+            flex-grow: 1;
             max-width: 500px;
             display: flex;
-            /* Aseguramos que la barra esté centrada dentro del espacio disponible */
-            margin: 0 20px; 
-	    
-	}
+            margin: 0 20px;
+        }
 
         .navbar-search input {
             width: 100%;
@@ -70,28 +68,40 @@
             border-radius: 4px 0 0 4px;
         }
         
-        /* Estilo para el botón de búsqueda PÚRPURA (Usado en Navbar principal y FAQ) */
         .navbar-search-btn {
             background-color: var(--color-accent);
             color: var(--color-secondary);
             border: none;
             cursor: pointer;
             transition: background-color 0.2s;
+            padding: 10px 15px;
+            border-radius: 0 4px 4px 0;
         }
         .navbar-search-btn:hover {
-            background-color: #4b298c; 
+            background-color: #4b298c;
         }
 
-        /* Borde redondeado solo para el botón del navbar principal */
-        .navbar-main .navbar-search-btn {
-             padding: 10px 15px;
-             border-radius: 0 4px 4px 0;
+        .navbar-icons {
+            flex-basis: 250px; 
+            display: flex;
+            justify-content: flex-end;
+            align-items: center; 
         }
-
         .navbar-icons a {
             margin-left: 20px;
-            font-size: 1em;
+            font-size: 0.9em;
             display: inline-block;
+            color: var(--color-secondary);
+            white-space: nowrap; 
+        }
+        .navbar-icons .comp-link {
+            display: flex;
+            align-items: center;
+        }
+        #comparison-counter {
+            color: var(--color-success); 
+            font-weight: bold;
+            margin-left: 5px;
         }
         
         /* Menú de Categorías (Barra Azul/Púrpura) */
@@ -128,38 +138,31 @@
             font-size: 2.5em;
         }
 
-        /* Nuevo estilo para el buscador de FAQ */
         .faq-search-bar {
-            display: flex; 
+            display: flex;
             justify-content: center;
             align-items: stretch;
             margin-bottom: 40px;
-            /* Asegura que no se pegue al borde en móviles */
-            padding: 0 10px; 
+            padding: 0 10px;
         }
 
         .faq-search-bar input {
             padding: 15px 20px;
             font-size: 1.1em;
-            /* Estilos solicitados: Borde y Sombra */
-            border: 1px solid #ccc; 
-            border-right: none; 
-            border-radius: 8px 0 0 8px; 
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+            border: 1px solid #ccc;
+            border-right: none;
+            border-radius: 8px 0 0 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             flex-grow: 1;
             max-width: 700px;
         }
 
-        /* Estilo para el botón de búsqueda de FAQ (Botón PÚRPURA adecuado) */
         .faq-search-bar .navbar-search-btn {
             padding: 15px 20px;
-            border-radius: 0 8px 8px 0; 
-            /* Asegura que la altura coincida con el input */
-            height: auto; 
+            border-radius: 0 8px 8px 0;
+            height: auto;
         }
 
-
-        /* Estructura de FAQ: Sidebar y Contenido */
         .faq-content {
             display: flex;
             gap: 30px;
@@ -171,7 +174,7 @@
             background-color: var(--color-light-gray);
             padding: 20px 0;
             border-radius: 8px;
-            height: fit-content; 
+            height: fit-content;
         }
 
         .faq-sidebar a {
@@ -180,7 +183,10 @@
             padding: 15px 20px;
             font-weight: bold;
             transition: background-color 0.2s;
-            cursor: pointer; 
+            cursor: pointer;
+            display: flex; 
+            align-items: center;
+            gap: 10px;
         }
 
         .faq-sidebar a:hover {
@@ -200,7 +206,6 @@
             flex-grow: 1;
         }
         
-        /* Diseño de Acordeón (Pregunta/Respuesta) */
         .accordion-item {
             border: 1px solid #ddd;
             margin-bottom: 10px;
@@ -236,91 +241,86 @@
             display: none;
         }
 
-        /* Contenedores de Preguntas (Para la funcionalidad JS) */
         .faq-group {
-            display: none; 
+            display: none;
         }
 
         .faq-group.active {
-            display: block; 
+            display: block;
         }
-        /* 5. Estilos Responsive */
-        @media (max-width: 950px) {
-            .navbar-search {
-                margin: 0 20px;
-            }
-            .navbar-icons a {
-                margin-left: 10px;
-                font-size: 0.9em;
-            }
-            .navbar-icons i {
-                display: block; 
-                margin-bottom: 2px;
-            }
-            
-            /* El menú azul se vuelve columna y centra enlaces */
-            .navbar-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 5px 0;
-            }
-            .navbar-menu a {
-                padding: 5px 10px;
-            }
-            .navbar-menu .right-link {
-                margin-left: 0;
-                width: 100%;
-                text-align: center;
-            }
+        /* Clase para ocultar elementos que no coinciden con la búsqueda */
+        .accordion-item.hidden-by-search {
+            display: none;
+        }
+
+        /* 4. WhatsApp Flotante */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: var(--color-success);
+            color: var(--color-secondary);
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* 5. Estilos Responsive (Ajustados) */
+
+        @media (max-width: 992px) {
+            .navbar-main { flex-wrap: wrap; justify-content: center; }
+            .navbar-main .logo { flex-basis: 100%; text-align: center; margin-bottom: 10px; }
+            .navbar-search { order: 3; width: 100%; max-width: 100%; margin: 0 10px; }
+            .navbar-icons { order: 2; flex-basis: auto; justify-content: center; margin-top: 10px; }
+            .navbar-icons a { margin: 0 10px; font-size: 0.8em; }
+            .navbar-menu { flex-wrap: wrap; justify-content: center; padding: 10px 10px; }
+            .navbar-menu a { padding: 5px 8px; }
         }
 
         @media (max-width: 768px) {
-            .navbar-main {
-                flex-wrap: wrap;
-            }
-            .navbar-search {
-                order: 3; 
-                width: 100%;
-                margin: 10px 55px 0px 10px;
-            }
-            .navbar-main .logo {
-                order: 1;
-            }
-            .navbar-icons {
-                order: 2;
-                display: flex;
-                flex-grow: 1;
-                justify-content: flex-end;
-            }
+            .faq-container { margin: 20px auto; padding: 0 10px; }
+            .faq-content { flex-direction: column; gap: 15px; }
+            .faq-header h1 { font-size: 2em; }
+            .faq-search-bar { margin-bottom: 20px; }
 
-            .faq-content {
-                flex-direction: column;
-            }
-            /* El buscador de FAQ en móvil ocupa el 100% menos márgenes */
-            .faq-search-bar {
-                 margin: 10px 0;
-                 padding: 0 20px;
-            }
-            /* El sidebar se convierte en pestañas horizontales en móvil */
             .faq-sidebar {
-                width: 100%; 
+                width: 100%;
                 padding: 10px;
-                display: flex; 
+                display: flex;
                 overflow-x: auto;
                 white-space: nowrap;
                 margin-bottom: 20px;
+                border-radius: 0;
             }
             .faq-sidebar a {
                 padding: 8px 15px;
                 border-radius: 5px;
                 margin-right: 5px;
-                flex-shrink: 0; /* Evita que el texto se comprima */
+                flex-shrink: 0;
             }
             .faq-sidebar a.active {
                 left: 0;
                 margin-left: 0;
                 border-radius: 5px;
             }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-main .logo { flex-basis: 50%; text-align: left; margin-bottom: 0; }
+            .navbar-icons { flex-basis: 50%; justify-content: flex-end; }
+            .navbar-search { margin: 10px 0; order: 3; }
+            .navbar-icons { flex-direction: column; align-items: flex-end; margin-top: 0; }
+            .navbar-icons a { margin: 2px 0; font-size: 0.75em; width: auto; text-align: right; }
+            .navbar-menu { display: block; text-align: center; }
+            .navbar-menu a { display: block; padding: 5px 0; }
+            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 24px; }
         }
     </style>
 </head>
@@ -331,21 +331,22 @@
             Compras a partir de $600.000 envío GRATIS a CABA y GBA
         </div>
         <div class="navbar-main">
-            <a href="#" class="logo">IT HYT</a>
+            <a href="index.html" class="logo">IT HYT</a>
             <div class="navbar-search">
                 <input type="text" placeholder="¿Qué estás buscando?">
-                <button class="navbar-search-btn"><i class="fas fa-search"></i></button> 
+                <button class="navbar-search-btn"><i class="fas fa-search"></i></button>
             </div>
             <div class="navbar-icons">
-                <a href="#"><i class="fas fa-user"></i> INGRESAR</a>
-                <a href="#"><i class="fas fa-heart"></i> FAVORITOS</a>
-                <a href="#"><i class="fas fa-shopping-cart"></i> CARRITO</a>
+                <a href="#">INGRESAR</a>
+                <a href="#">FAVORITOS</a>
+                <a href="comparador.html" class="comp-link">COMPARAR<span id="comparison-counter"></span></a>
+                <a href="#">CARRITO</a>
             </div>
         </div>
         <nav class="navbar-menu">
             <a href="#">CATEGORÍAS <i class="fas fa-caret-down"></i></a>
             <a href="#">OPORTUNIDADES</a>
-            <a href="#">NOVEDADES</a>
+            <a href="faq.html">PREGUNTAS FRECUENTES</a>
             <a href="#" class="right-link">VENDE NUESTRAS MARCAS</a>
         </nav>
     </header>
@@ -356,8 +357,8 @@
         </div>
 
         <div class="faq-search-bar">
-            <input type="text" id="faq-search-input" placeholder="Busca tu pregunta aquí (Ej: Devolución, Seguimiento de Envío)...">
-            <button class="navbar-search-btn"><i class="fas fa-search"></i></button> 
+            <input type="text" id="faq-search-input" onkeyup="searchFAQ()" placeholder="Busca tu pregunta aquí (Ej: Devolución, Seguimiento de Envío)...">
+            <button class="navbar-search-btn"><i class="fas fa-search"></i></button>
         </div>
 
         <div class="faq-content">
@@ -381,7 +382,8 @@
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
-                            <p>Aquí irá el texto de la respuesta sobre los costos y plazos de entrega.</p>
+                            <p>El costo de envío se calcula al momento de finalizar la compra, dependiendo de tu ubicación y el peso/volumen de los productos. Ofrecemos **envío GRATIS a CABA y GBA** en compras superiores a $600.000.</p>
+                            <p>Los plazos de entrega son: **CABA/GBA:** 24 a 48 horas hábiles. **Interior del país:** 3 a 7 días hábiles.</p>
                         </div>
                     </div>
 
@@ -391,7 +393,17 @@
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
-                            <p>Aquí irá el texto de la respuesta sobre cómo seguir el pedido.</p>
+                            <p>Una vez que tu pedido es despachado, recibirás un correo electrónico con el **código de seguimiento** y un enlace directo a la página de nuestro operador logístico (OCA/Correo Argentino/Propio). Este enlace se activará entre 4 y 12 horas después del despacho.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-question" onclick="toggleAnswer(this)">
+                            <span>¿Puedo retirar mi compra personalmente?</span>
+                            <i class="fas fa-plus accordion-icon"></i>
+                        </div>
+                        <div class="accordion-answer">
+                            <p>Sí, puedes seleccionar la opción "Retiro en Sucursal" durante el proceso de compra. Nuestro punto de retiro se encuentra en el barrio de Belgrano, CABA. Recibirás un aviso cuando tu pedido esté listo para ser retirado (generalmente 24 horas después de la compra).</p>
                         </div>
                     </div>
                 </div>
@@ -405,7 +417,7 @@
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
-                            <p>Aquí irá el texto de las tarjetas aceptadas y las opciones de cuotas.</p>
+                            <p>Aceptamos todas las tarjetas de crédito (Visa, Mastercard, Amex, Cabal) a través de **Mercado Pago** y **Todo Pago**. Puedes ver las promociones vigentes de cuotas sin interés con bancos específicos en la sección de "Oportunidades" o al momento de ingresar los datos de tu tarjeta en el checkout.</p>
                         </div>
                     </div>
 
@@ -415,27 +427,110 @@
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
-                            <p>Aquí irá la información sobre los métodos de pago sin tarjeta.</p>
+                            <p>Sí. Ofrecemos un **10% de descuento** por pagos realizados mediante **Transferencia Bancaria**. También puedes pagar en efectivo en puntos de cobro como Rapipago o Pago Fácil generando un código a través de Mercado Pago al finalizar tu compra.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-question" onclick="toggleAnswer(this)">
+                            <span>¿Qué hago si mi pago es rechazado?</span>
+                            <i class="fas fa-plus accordion-icon"></i>
+                        </div>
+                        <div class="accordion-answer">
+                            <p>El rechazo de un pago es un proceso ajeno a IT HYT. Generalmente se debe a: fondos insuficientes, error en el ingreso de datos, o un bloqueo de seguridad de tu banco. Te recomendamos verificar los datos, comunicarte con tu banco o intentar con otro medio de pago.</p>
                         </div>
                     </div>
                 </div>
 
-                <div id="cambios-devoluciones" class="faq-group"><h2>Cambios y Devoluciones</h2></div>
-                <div id="productos-garantias" class="faq-group"><h2>Productos y Garantías</h2></div>
-                <div id="mi-cuenta-pedidos" class="faq-group"><h2>Mi Cuenta y Pedidos</h2></div>
+                <div id="cambios-devoluciones" class="faq-group">
+                    <h2>Cambios y Devoluciones</h2>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-question" onclick="toggleAnswer(this)">
+                            <span>¿Cuál es el plazo para solicitar un cambio o devolución?</span>
+                            <i class="fas fa-plus accordion-icon"></i>
+                        </div>
+                        <div class="accordion-answer">
+                            <p>Tienes **10 días corridos** desde la recepción del producto para solicitar un cambio o la devolución total del dinero. El producto debe estar en su empaque original, sellado y sin uso.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-question" onclick="toggleAnswer(this)">
+                            <span>¿Cómo inicio el proceso de devolución de un artículo?</span>
+                            <i class="fas fa-plus accordion-icon"></i>
+                        </div>
+                        <div class="accordion-answer">
+                            <p>Debes enviar un correo a **devoluciones@ithyt.com** indicando tu número de pedido y el motivo de la devolución. Nuestro equipo te enviará en 24 horas la etiqueta de envío prepaga para que puedas despacharlo sin costo desde cualquier sucursal de correo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="productos-garantias" class="faq-group">
+                    <h2>Productos y Garantías</h2>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-question" onclick="toggleAnswer(this)">
+                            <span>¿Todos los productos tienen garantía? ¿Por cuánto tiempo?</span>
+                            <i class="fas fa-plus accordion-icon"></i>
+                        </div>
+                        <div class="accordion-answer">
+                            <p>Sí, todos nuestros productos son nuevos y tienen una **garantía oficial de 12 meses** con el fabricante. IT HYT ofrece una garantía directa de 30 días contra cualquier defecto de fábrica desde la fecha de recepción. Pasado ese lapso, la gestión es directamente con la marca.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-question" onclick="toggleAnswer(this)">
+                            <span>¿Son productos originales o reacondicionados?</span>
+                            <i class="fas fa-plus accordion-icon"></i>
+                        </div>
+                        <div class="accordion-answer">
+                            <p>Todos los productos vendidos en IT HYT son **100% originales**, nuevos y vienen en caja sellada de fábrica. Solo vendemos equipos de primera línea y de las marcas líderes en tecnología.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="mi-cuenta-pedidos" class="faq-group">
+                    <h2>Mi Cuenta y Pedidos</h2>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-question" onclick="toggleAnswer(this)">
+                            <span>Olvidé mi contraseña, ¿cómo la recupero?</span>
+                            <i class="fas fa-plus accordion-icon"></i>
+                        </div>
+                        <div class="accordion-answer">
+                            <p>En la sección "INGRESAR" haz clic en "¿Olvidaste tu contraseña?". Se te pedirá ingresar el correo electrónico asociado a tu cuenta. Recibirás un enlace para establecer una nueva clave de acceso.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-question" onclick="toggleAnswer(this)">
+                            <span>¿Puedo cancelar o modificar un pedido ya realizado?</span>
+                            <i class="fas fa-plus accordion-icon"></i>
+                        </div>
+                        <div class="accordion-answer">
+                            <p>Puedes solicitar la cancelación de un pedido **sólo si aún no ha sido despachado**. Contáctanos inmediatamente por WhatsApp o al 0800-TECH-HYT. Una vez que el estado sea "En Camino", ya no es posible cancelarlo; deberás iniciar un proceso de devolución una vez recibido.</p>
+                        </div>
+                    </div>
+                </div>
 
             </section>
         </div>
     </main>
 
+    <a href="https://wa.me/" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
-        // 1. Función para el Acordeón (mostrar/ocultar respuestas)
+        /**
+         * Función para alternar la visualización de las respuestas del acordeón.
+         */
         function toggleAnswer(element) {
             const answer = element.nextElementSibling;
             const icon = element.querySelector('.accordion-icon');
             
-            // Cierra todas las respuestas abiertas en el grupo activo actual
+            // Cierra otras respuestas abiertas en el grupo activo
             document.querySelectorAll('.faq-group.active .accordion-answer').forEach(ans => {
                 if (ans !== answer && ans.style.display === "block") {
                     ans.style.display = "none";
@@ -444,7 +539,7 @@
                 }
             });
             
-            // Muestra/Oculta la respuesta clickeada
+            // Abre o cierra la respuesta actual
             if (answer.style.display === "block") {
                 answer.style.display = "none";
                 icon.classList.remove('fa-minus');
@@ -455,64 +550,116 @@
                 icon.classList.add('fa-minus');
             }
         }
-        
-        // 2. Función para cambiar de categoría de preguntas (Sidebar)
-        document.querySelectorAll('.sidebar-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // 1. Desactivar el enlace activo actual y activar el nuevo
-                document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-                
-                // 2. Ocultar todos los grupos de preguntas
-                document.querySelectorAll('.faq-group').forEach(group => group.classList.remove('active'));
-                
-                // 3. Mostrar el grupo de preguntas objetivo
-                const targetId = this.getAttribute('data-target');
-                const targetGroup = document.getElementById(targetId);
-                if (targetGroup) {
-                    targetGroup.classList.add('active');
-                }
-                
-                // 4. Limpieza: Cerrar todas las respuestas de acordeón y limpiar buscador
-                document.querySelectorAll('.accordion-answer').forEach(ans => ans.style.display = "none");
-                document.querySelectorAll('.accordion-icon').forEach(icon => {
-                    icon.classList.remove('fa-minus');
-                    icon.classList.add('fa-plus');
-                });
-                
-                // 5. Limpiar el campo de búsqueda de FAQ y restaurar la vista
-                document.getElementById('faq-search-input').value = '';
-                filterFaq(); // Ejecuta la función para mostrar todas las preguntas de la nueva categoría
-            });
-        });
 
-        // 3. Función para filtrar preguntas de FAQ en tiempo real
-        function filterFaq() {
+        /**
+         * Función del Motor de Búsqueda: Filtra las preguntas por texto.
+         */
+        function searchFAQ() {
             const input = document.getElementById('faq-search-input');
-            const filter = input.value.toLowerCase();
-            const activeGroup = document.querySelector('.faq-group.active');
-            
-            if (!activeGroup) return; 
+            const filter = input.value.toUpperCase();
+            const items = document.querySelectorAll('.accordion-item');
 
-            // Itera sobre todos los elementos de acordeón del grupo activo
-            const allItems = activeGroup.querySelectorAll('.accordion-item');
-            allItems.forEach(item => {
-                // Obtener el texto de la pregunta
-                const questionText = item.querySelector('.accordion-question span').textContent.toLowerCase();
-
-                if (questionText.includes(filter)) {
-                    item.style.display = 'block'; // Mostrar si coincide
+            items.forEach(item => {
+                const questionText = item.querySelector('.accordion-question span').textContent.toUpperCase();
+                const answerText = item.querySelector('.accordion-answer').textContent.toUpperCase();
+                
+                if (questionText.includes(filter) || answerText.includes(filter)) {
+                    item.classList.remove('hidden-by-search');
                 } else {
-                    item.style.display = 'none'; // Ocultar si no coincide
+                    item.classList.add('hidden-by-search');
                 }
+            });
+
+            // Oculta grupos si no tienen preguntas visibles (opcional, pero mejora la vista)
+            document.querySelectorAll('.faq-group').forEach(group => {
+                const visibleItems = group.querySelectorAll('.accordion-item:not(.hidden-by-search)').length;
+                group.style.display = visibleItems > 0 ? 'block' : 'none';
+            });
+
+            // Desactiva el sidebar al buscar para que se vean todos los resultados
+            if (filter.length > 0) {
+                 document.querySelectorAll('.faq-group').forEach(group => group.classList.add('active'));
+                 document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+            } else {
+                // Si el campo de búsqueda está vacío, reactiva la vista por categoría
+                const firstLink = document.querySelector('.faq-sidebar a:first-child');
+                const firstTargetId = firstLink.getAttribute('data-target');
+                
+                document.querySelectorAll('.faq-group').forEach(group => group.classList.remove('active'));
+                document.getElementById(firstTargetId).classList.add('active');
+                firstLink.classList.add('active');
+                
+                document.querySelectorAll('.faq-group').forEach(group => group.style.display = 'none');
+                document.getElementById(firstTargetId).style.display = 'block';
+            }
+            
+            // Asegúrate de que las respuestas estén cerradas cuando se filtra
+            document.querySelectorAll('.accordion-answer').forEach(ans => ans.style.display = "none");
+            document.querySelectorAll('.accordion-icon').forEach(icon => {
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
             });
         }
 
-        // 4. Asignar el evento 'keyup' al campo de búsqueda para filtrar al escribir
-        document.getElementById('faq-search-input').addEventListener('keyup', filterFaq);
 
+        /**
+         * Función de ayuda para actualizar el contador del carrito (basada en el index.html)
+         */
+        function updateComparisonCounter(count) {
+            const counter = document.getElementById('comparison-counter');
+            if (counter) {
+                counter.textContent = count > 0 ? ` (${count})` : '';
+            }
+        }
+
+        /**
+         * Lógica de inicialización al cargar la página
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializar el contador
+            const comparisonProducts = JSON.parse(localStorage.getItem('comparisonProducts') || '[]');
+            updateComparisonCounter(comparisonProducts.length);
+            
+            // Inicializar la vista del FAQ (solo el primer grupo activo)
+            const activeTarget = document.querySelector('.faq-sidebar a.active')?.getAttribute('data-target');
+            if (activeTarget) {
+                document.getElementById(activeTarget).classList.add('active');
+                document.getElementById(activeTarget).style.display = 'block';
+            }
+
+            // Manejar clics en el sidebar
+            document.querySelectorAll('.sidebar-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Resetear el campo de búsqueda y la visibilidad de ítems
+                    document.getElementById('faq-search-input').value = '';
+                    document.querySelectorAll('.accordion-item').forEach(item => item.classList.remove('hidden-by-search'));
+
+                    // Cambiar el estado activo del sidebar
+                    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+
+                    // Mostrar/Ocultar los grupos de FAQ
+                    document.querySelectorAll('.faq-group').forEach(group => {
+                        group.classList.remove('active');
+                        group.style.display = 'none'; // Asegura que solo se vea el activo
+                    });
+                    const targetId = link.getAttribute('data-target');
+                    const targetGroup = document.getElementById(targetId);
+                    targetGroup.classList.add('active');
+                    targetGroup.style.display = 'block';
+                    
+                    // Asegúrate de cerrar todas las respuestas al cambiar de grupo
+                    document.querySelectorAll('.accordion-answer').forEach(ans => ans.style.display = "none");
+                    document.querySelectorAll('.accordion-icon').forEach(icon => {
+                        icon.classList.remove('fa-minus');
+                        icon.classList.add('fa-plus');
+                    });
+                });
+            });
+        });
+        
     </script>
 </body>
 </html>

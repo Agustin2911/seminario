@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT HYT - HOME</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Definición de Colores */
+        :root {
+            --color-primary: #000000; /* Negro Oscuro (Fondo Navbar) */
+            --color-secondary: #ffffff; /* Blanco */
+            --color-accent: #5e35b1; /* Púrpura Vibrante */
+            --color-light-gray: #f5f5f5; /* Gris Claro (Fondo cuerpo, tarjetas) */
+            --color-text-dark: #333333; /* Texto principal oscuro */
+            --color-success: #25d366; /* Verde para WhatsApp/Éxito */
+        }
+
+        /* Reset Básico y Tipografía */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-light-gray);
+            color: var(--color-text-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-secondary);
+        }
+
+        /* 1. Navbar y Encabezado */
+        .top-banner {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.8em;
+        }
+
+        .navbar-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--color-primary);
+            padding: 10px 20px;
+            flex-wrap: wrap;
+        }
+
+        .navbar-main .logo {
+            color: var(--color-secondary);
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-basis: 150px;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .navbar-search {
+            flex-grow: 1;
+            max-width: 500px;
+            display: flex;
+            margin: 0 20px;
+        }
+
+        .navbar-search input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .navbar-search-btn {
+            background-color: var(--color-accent);
+            color: var(--color-secondary);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            padding: 10px 15px;
+            border-radius: 0 4px 4px 0;
+        }
+        .navbar-search-btn:hover {
+            background-color: #4b298c;
+        }
+
+        .navbar-icons {
+            flex-basis: 250px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .navbar-icons a {
+            margin-left: 20px;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            color: var(--color-secondary);
+            white-space: nowrap;
+        }
+        .navbar-icons a i {
+            margin-right: 5px;
+        }
+        .navbar-icons .comp-link {
+            /* Mantener como en el original */
+        }
+        #comparison-counter {
+            color: var(--color-success);
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        
+        /* Menú de Categorías (Barra Púrpura) */
+        .navbar-menu {
+            background-color: var(--color-accent);
+            display: flex;
+            justify-content: flex-start;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+        .navbar-menu a {
+            color: var(--color-secondary);
+            padding: 0 15px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+        
+        .navbar-menu .right-link {
+            margin-left: auto;
+        }
+        /* Fin de Estilos del Navbar */
+
+        /* 2. Contenido de la Home (No Modificado) */
+        .hero {
+            background-color: var(--color-primary);
+            padding: 50px 20px;
+            text-align: center;
+            /* Se recomienda usar una ruta de imagen real o la etiqueta  */
+            background-image: url('data:image/jpeg;base64,...'); /* Placeholder for image_389ed1.jpg */
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hero-content {
+            text-align: left;
+            margin-left: 10%;
+        }
+        .hero-content .tag {
+            background-color: var(--color-accent);
+            color: var(--color-secondary);
+            padding: 8px 15px;
+            font-size: 1.5em;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .hero-content h2 {
+            color: var(--color-secondary);
+            font-size: 3em;
+            margin: 0;
+        }
+        .hero-content p {
+            color: #ddd;
+            font-size: 1.2em;
+        }
+        .slider-arrow {
+            color: var(--color-secondary);
+            font-size: 3em;
+            cursor: pointer;
+            padding: 0 20px;
+        }
+
+        /* 3. Ofertas de la Semana (No Modificado) */
+        .offers-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .offers-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .offers-header h2 {
+            font-size: 2em;
+            color: var(--color-primary);
+        }
+        .offers-header a {
+            color: var(--color-accent);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background-color: var(--color-secondary);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+        }
+        .product-card .img-placeholder {
+            height: 150px;
+            background-color: var(--color-light-gray);
+            margin-bottom: 15px;
+        }
+        .product-card h3 {
+            font-size: 1.1em;
+            color: var(--color-text-dark);
+            margin-bottom: 5px;
+            height: 40px;
+        }
+        .product-card .price {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--color-accent);
+            margin-bottom: 15px;
+        }
+        .product-card .buy-btn {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            padding: 10px 20px;
+            border-radius: 4px;
+            display: block;
+            margin-bottom: 10px;
+            transition: background-color 0.2s;
+        }
+        .product-card .buy-btn:hover {
+            background-color: #4b4b4b;
+        }
+
+        /* === AJUSTE DE TAMAÑO DEL BOTÓN DE COMPARACIÓN === */
+        .compare-btn {
+            background-color: #ddd;
+            color: var(--color-text-dark);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 0.9em;
+            transition: background-color 0.2s;
+            padding: 8px 15px;
+            min-height: 38px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .compare-btn.selected-for-comp {
+            background-color: var(--color-success);
+            color: var(--color-secondary);
+            padding: 8px 15px;
+            min-height: 38px;
+            box-sizing: border-box;
+        }
+        /* ================================================== */
+
+
+        /* 4. WhatsApp Flotante (No Modificado) */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: var(--color-success);
+            color: var(--color-secondary);
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ---------------------------------------------------- */
+        /* 5. ESTILOS RESPONSIVE APLICADOS */
+        /* ---------------------------------------------------- */
+
+        /* Tabletas y Pantallas Medianas (Max 992px) */
+        @media (max-width: 992px) {
+            .navbar-main {
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .navbar-main .logo {
+                flex-basis: auto;
+                text-align: left;
+                margin-bottom: 0;
+            }
+            .navbar-search {
+                order: 3;
+                flex-basis: 100%;
+                max-width: 100%;
+                margin: 10px 0;
+            }
+            .navbar-icons {
+                order: 2;
+                flex-basis: auto;
+                justify-content: flex-end;
+                margin-top: 0;
+                flex-grow: 1;
+            }
+            .navbar-icons a {
+                margin-left: 15px;
+                font-size: 0.9em;
+            }
+            .navbar-menu {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                padding: 10px 20px;
+            }
+            .navbar-menu a {
+                padding: 5px 10px;
+            }
+            .hero-content h2 {
+                font-size: 2.5em;
+            }
+        }
+
+        /* Móviles (Max 576px) - SOLUCIÓN PARA EL NAVBAR */
+        @media (max-width: 576px) {
+            .top-banner {
+                font-size: 0.7em;
+            }
+
+            .navbar-main {
+                flex-direction: column;
+                align-items: center;
+                padding: 15px 10px;
+            }
+            .navbar-main .logo {
+                flex-basis: 100%;
+                text-align: center;
+                margin-bottom: 15px;
+                order: 1;
+            }
+            
+            /* Contenedor de Íconos: Se mueve al centro y se apila */
+            .navbar-icons {
+                order: 2;
+                flex-direction: column;
+                flex-basis: 100%;
+                align-items: center;
+                margin-top: 5px;
+            }
+            .navbar-icons a {
+                margin: 5px 0;
+                font-size: 0.9em;
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+            .navbar-icons a i {
+                margin-right: 8px;
+            }
+
+            /* Barra de Búsqueda: Se coloca debajo de los íconos */
+            .navbar-search {
+                order: 3;
+                flex-basis: 100%;
+                margin: 15px 0 0 0;
+            }
+
+            /* Menú de Categorías (Barra Púrpura) */
+            .navbar-menu {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px 10px;
+            }
+            .navbar-menu a {
+                display: block;
+                padding: 8px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            .navbar-menu a:last-child {
+                border-bottom: none;
+            }
+            .navbar-menu .right-link {
+                margin-left: 0; /* Asegurar que no quede a la derecha en móvil */
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="top-banner">
+            Compras a partir de $600.000 envío GRATIS a CABA y GBA
+        </div>
+        <div class="navbar-main">
+            <a href="index.html" class="logo">IT HYT</a>
+            <div class="navbar-search">
+                <input type="text" placeholder="¿Qué estás buscando?">
+                <button class="navbar-search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="navbar-icons">
+                <a href="#"><i class="fas fa-sign-in-alt"></i>INGRESAR</a>
+                <a href="#"><i class="fas fa-heart"></i>FAVORITOS</a>
+                <a href="comparador.html" class="comp-link"><i class="fas fa-balance-scale"></i>COMPARAR<span id="comparison-counter"></span></a>
+                <a href="#"><i class="fas fa-shopping-cart"></i>CARRITO</a>
+            </div>
+        </div>
+        <nav class="navbar-menu">
+            <a href="#">CATEGORÍAS <i class="fas fa-caret-down"></i></a>
+            <a href="#">OPORTUNIDADES</a>
+            <a href="faq.html">PREGUNTAS FRECUENTES</a>
+            <a href="#" class="right-link">VENDE NUESTRAS MARCAS</a>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <i class="fas fa-chevron-left slider-arrow"></i>
+            <div class="hero-content">
+                <span class="tag">¡NUEVO!</span>
+                <h2>Laptop Gamer Pro 2025</h2>
+                <p>Potencia inigualable para la máxima experiencia de juego.</p>
+            </div>
+            <i class="fas fa-chevron-right slider-arrow"></i>
+        </section>
+
+<section class="offers-section">
+            <div class="offers-header">
+                <h2>🔥 Ofertas de la Semana</h2>
+                <a href="#">VER TODAS <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card" data-product-id="prod-001">
+                    <div class="img-placeholder">IMAGEN DEL PRODUCTO</div>
+                    <h3>Monitor UltraWide 34" 144Hz</h3>
+                    <p class="price">$589.999</p>
+                    <a href="#" class="buy-btn">COMPRAR</a>
+                    <button class="compare-btn" onclick="toggleComparison(this)">Añadir a Comparar</button>
+                </div>
+
+                <div class="product-card" data-product-id="prod-002">
+                    <div class="img-placeholder">IMAGEN DEL PRODUCTO</div>
+                    <h3>Teclado Mecánico RGB Pro</h3>
+                    <p class="price">$45.500</p>
+                    <a href="#" class="buy-btn">COMPRAR</a>
+                    <button class="compare-btn" onclick="toggleComparison(this)">Añadir a Comparar</button>
+                </div>
+                
+                <div class="product-card" data-product-id="prod-003">
+                    <div class="img-placeholder">IMAGEN DEL PRODUCTO</div>
+                    <h3>Webcam 4K con Autoenfoque</h3>
+                    <p class="price">$85.000</p>
+                    <a href="#" class="buy-btn">COMPRAR</a>
+                    <button class="compare-btn" onclick="toggleComparison(this)">Añadir a Comparar</button>
+                </div>
+
+                <div class="product-card" data-product-id="prod-004">
+                    <div class="img-placeholder">IMAGEN DEL PRODUCTO</div>
+                    <h3>Mouse Ergonómico Inalámbrico</h3>
+                    <p class="price">$19.999</p>
+                    <a href="#" class="buy-btn">COMPRAR</a>
+                    <button class="compare-btn" onclick="toggleComparison(this)">Añadir a Comparar</button>
+                </div>
+
+                <div class="product-card" data-product-id="prod-005">
+                    <div class="img-placeholder">IMAGEN DEL PRODUCTO</div>
+                    <h3>Mouse Ergonómico Inalámbrico</h3>
+                    <p class="price">$19.999</p>
+                    <a href="#" class="buy-btn">COMPRAR</a>
+                    <button class="compare-btn" onclick="toggleComparison(this)">Añadir a Comparar</button>
+                </div>
+
+                <div class="product-card" data-product-id="prod-006">
+                    <div class="img-placeholder">IMAGEN DEL PRODUCTO</div>
+                    <h3>auriculares  Inalámbrico</h3>
+                    <p class="price">$95.999</p>
+                    <a href="#" class="buy-btn">COMPRAR</a>
+                    <button class="compare-btn" onclick="toggleComparison(this)">Añadir a Comparar</button>
+                </div>
+
+                <div class="product-card" data-product-id="prod-007">
+                    <div class="img-placeholder">IMAGEN DEL PRODUCTO</div>
+                    <h3>Mouse logitech </h3>
+                    <p class="price">$49.999</p>
+                    <a href="#" class="buy-btn">COMPRAR</a>
+                    <button class="compare-btn" onclick="toggleComparison(this)">Añadir a Comparar</button>
+                </div>
+            </div>
+        </section>    </main>
+
+    <a href="https://wa.me/" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Función para actualizar el contador de comparación (tomado de faq.html)
+        function updateComparisonCounter(count) {
+            const counter = document.getElementById('comparison-counter');
+            if (counter) {
+                counter.textContent = count > 0 ? ` (${count})` : '';
+            }
+        }
+
+        // Función para manejar la lógica de comparación
+        function toggleComparison(button) {
+            const productId = button.closest('.product-card').getAttribute('data-product-id');
+            let comparisonProducts = JSON.parse(localStorage.getItem('comparisonProducts') || '[]');
+
+            const index = comparisonProducts.indexOf(productId);
+
+            if (index === -1) {
+                // Añadir al comparador
+                comparisonProducts.push(productId);
+                button.classList.add('selected-for-comp');
+                button.innerHTML = '<i class="fas fa-check"></i> Comparando';
+            } else {
+                // Quitar del comparador
+                comparisonProducts.splice(index, 1);
+                button.classList.remove('selected-for-comp');
+                button.innerHTML = 'Añadir a Comparar';
+            }
+
+            localStorage.setItem('comparisonProducts', JSON.stringify(comparisonProducts));
+            updateComparisonCounter(comparisonProducts.length);
+        }
+
+        // Inicializar el contador y el estado de los botones al cargar
+        document.addEventListener('DOMContentLoaded', () => {
+            const comparisonProducts = JSON.parse(localStorage.getItem('comparisonProducts') || '[]');
+            updateComparisonCounter(comparisonProducts.length);
+
+            document.querySelectorAll('.product-card').forEach(card => {
+                const productId = card.getAttribute('data-product-id');
+                const button = card.querySelector('.compare-btn');
+                
+                if (comparisonProducts.includes(productId)) {
+                    button.classList.add('selected-for-comp');
+                    button.innerHTML = '<i class="fas fa-check"></i> Comparando';
+                } else {
+                    button.classList.remove('selected-for-comp');
+                    button.innerHTML = 'Añadir a Comparar';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

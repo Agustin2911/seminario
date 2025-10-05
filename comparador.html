@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de Productos | IT HYT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Definición de Colores */
+        :root {
+            --color-primary: #000000;
+            --color-secondary: #ffffff;
+            --color-accent: #5e35b1;
+            --color-light-gray: #f5f5f5;
+            --color-text-dark: #333333;
+            --color-success: #25d366;
+        }
+
+        /* Reset Básico y Tipografía */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-light-gray);
+            color: var(--color-text-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-secondary);
+        }
+
+        /* 1. Navbar y Encabezado (Omitido para brevedad, usando los estilos previos) */
+        .top-banner {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.8em;
+        }
+
+        .navbar-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--color-primary);
+            padding: 10px 20px;
+            flex-wrap: wrap;
+        }
+
+        .navbar-main .logo {
+            color: var(--color-secondary);
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .menu-toggle {
+            display: none;
+            color: var(--color-secondary);
+            font-size: 1.5em;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        .navbar-search {
+            flex-grow: 1;
+            max-width: 500px;
+            display: flex;
+            margin: 0 20px;
+        }
+
+        .navbar-search input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .navbar-search-btn {
+            background-color: var(--color-accent);
+            color: var(--color-secondary);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            padding: 10px 15px;
+            border-radius: 0 4px 4px 0;
+        }
+        .navbar-search-btn:hover {
+            background-color: #4b298c;
+        }
+
+        .navbar-icons {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .navbar-icons a {
+            margin-left: 20px;
+            font-size: 1em;
+            display: inline-block;
+            color: var(--color-secondary);
+            white-space: nowrap;
+        }
+        .navbar-icons .comp-link {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-icons a i {
+            margin-right: 5px;
+        }
+        #comparison-counter {
+            color: var(--color-success);
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        
+        .navbar-menu {
+            background-color: var(--color-accent);
+            display: flex;
+            justify-content: flex-start;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+        .navbar-menu a {
+            color: var(--color-secondary);
+            padding: 0 15px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+        
+        .navbar-menu .right-link {
+            margin-left: auto;
+        }
+        
+        /* 2. Contenido Principal: Comparador */
+        .product-page-container {
+            max-width: 1300px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .product-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .product-header h1 {
+            color: var(--color-primary);
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+
+        .product-header .sku {
+            color: #777;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            display: block;
+        }
+        
+        .comparison-controls {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        #comparison-clear-btn {
+            background-color: #f44336;
+            color: var(--color-secondary);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        /* 3. Tabla de Comparación */
+        .comparison-section {
+            background-color: var(--color-secondary);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            padding: 30px 10px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.95em;
+            table-layout: fixed;
+        }
+        
+        /* Estilos de tabla... */
+        .comparison-table th, .comparison-table td {
+            padding: 15px 5px;
+            text-align: center;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table th:last-child, .comparison-table td:last-child {
+            border-right: none;
+        }
+
+        .comparison-table thead th {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            font-weight: bold;
+            font-size: 1em;
+            text-transform: uppercase;
+            padding: 15px 5px;
+        }
+        
+        .comparison-table .feature-cell {
+            text-align: left;
+            font-weight: bold;
+            background-color: var(--color-light-gray);
+            color: var(--color-primary);
+            border-right: 1px solid #ddd;
+            width: 180px;
+        }
+        
+        .comparison-table .product-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: var(--color-accent);
+        }
+        .comparison-table .price-cell {
+            font-weight: bold;
+            font-size: 1.4em;
+            color: var(--color-primary);
+        }
+
+        .comparison-table .buy-link a {
+            background-color: var(--color-accent);
+            color: var(--color-secondary);
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            display: inline-block;
+            transition: background-color 0.2s;
+        }
+        .comparison-table .buy-link a:hover {
+            background-color: #4b298c;
+        }
+        
+        /* 4. WhatsApp Flotante (Estilo Original) */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: var(--color-success);
+            color: var(--color-secondary);
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 5. Responsive para Móviles */
+
+        @media (max-width: 992px) {
+            .navbar-search {
+                margin: 10px 0;
+                order: 3;
+                width: 100%;
+                max-width: none;
+                flex-basis: 100%;
+            }
+            .navbar-menu {
+                flex-direction: column;
+                display: none;
+                padding: 10px 20px;
+                position: absolute;
+                width: 100%;
+                box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+                z-index: 999;
+                top: 90px;
+            }
+            .navbar-menu.open {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .comparison-section {
+                overflow-x: auto;
+            }
+            .comparison-table {
+                width: 900px;
+                table-layout: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-icons a {
+                font-size: 0; 
+                padding-right: 0;
+                margin-left: 10px;
+            }
+            .navbar-icons a i {
+                font-size: 1.2em;
+                margin-right: 0;
+            }
+            .navbar-icons .comp-link, .navbar-icons a:last-child {
+                font-size: 1em;
+            }
+            .comparison-table {
+                width: 700px;
+            }
+            .comparison-table .feature-cell {
+                width: 120px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body onload="loadComparisonTable()">
+
+    <header>
+        <div class="top-banner">
+            Compras a partir de $600.000 envío GRATIS a CABA y GBA
+        </div>
+        <div class="navbar-main">
+            <a href="index.html" class="logo">IT HYT</a>
+            <div class="navbar-icons">
+                <a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a>
+                <a href="#"><i class="fas fa-user"></i> INGRESAR</a>
+                <a href="#"><i class="fas fa-heart"></i> FAVORITOS</a>
+                <a href="comparador.html" class="comp-link"><i class="fas fa-columns"></i> COMPARAR<span id="comparison-counter"></span></a>
+                <a href="#"><i class="fas fa-shopping-cart"></i> CARRITO</a>
+            </div>
+            <div class="navbar-search">
+                <input type="text" placeholder="Busca productos (ej: iPhone, Notebook HP)...">
+                <button class="navbar-search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        <nav class="navbar-menu" id="main-menu">
+            <a href="#">CATEGORÍAS <i class="fas fa-caret-down"></i></a>
+            <a href="#">OPORTUNIDADES</a>
+            <a href="faq.html">PREGUNTAS FRECUENTES</a>
+            <a href="#" class="right-link">VENDE NUESTRAS MARCAS</a>
+        </nav>
+    </header>
+    
+    <main class="product-page-container">
+        
+        <div class="product-header">
+            <h1>Comparador de Productos Seleccionados</h1>
+            <span class="sku">Compara hasta 4 productos de nuestro catálogo side-by-side</span>
+        </div>
+        
+        <div class="comparison-controls">
+            <button id="comparison-clear-btn" onclick="clearComparison()">
+                <i class="fas fa-times-circle"></i> Limpiar Comparación
+            </button>
+        </div>
+
+        <section class="comparison-section">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Características</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <a href="https://wa.me/" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+<script>
+    /**
+     * SIMULACIÓN: Función que simula la obtención de datos de producto,
+     * ahora con los nuevos productos.
+     */
+    function getProductData(productId) {
+        const productDatabase = {
+            'prod-001': {
+                name: 'Monitor UltraWide 34"',
+                price: '$589.999',
+                processor: 'N/A',
+                ram: 'N/A',
+                storage: '3440x1440 / 144Hz'
+            },
+            'prod-002': {
+                name: 'Teclado Mecánico RGB Pro',
+                price: '$45.500',
+                processor: 'Switches Brown Táctil',
+                ram: 'Anti-Ghosting',
+                storage: 'Full RGB'
+            },
+            'prod-003': {
+                name: 'Webcam 4K con Autoenfoque',
+                price: '$85.000',
+                processor: 'Sensor CMOS 8MP',
+                ram: 'N/A',
+                storage: '4K/30fps, Auto Focus'
+            },
+            'prod-004': {
+                name: 'Mouse Ergonómico Inalámbrico',
+                price: '$19.999',
+                processor: 'Sensor Óptico',
+                ram: 'N/A',
+                storage: '8000 DPI'
+            },
+            // --- NUEVOS PRODUCTOS AGREGADOS ---
+            'prod-005': {
+                name: 'Mousepad Gamer XL',
+                price: '$12.500',
+                processor: 'Base de Goma Antideslizante',
+                ram: 'N/A',
+                storage: '900mm x 400mm'
+            },
+            'prod-006': {
+                name: 'Auriculares Inalámbricos Gaming',
+                price: '$95.999',
+                processor: 'Driver 50mm Neodimio',
+                ram: 'Bluetooth 5.0 + 2.4GHz',
+                storage: 'Micrófono Removible'
+            },
+            'prod-007': {
+                name: 'Mouse Logitech MX Master 3S',
+                price: '$49.999',
+                processor: 'Sensor Darkfield',
+                ram: 'Flow Multi-Device',
+                storage: '8000 DPI / USB-C'
+            }
+        };
+        return productDatabase[productId] || null;
+    }
+
+    // Función de ayuda para actualizar el contador
+    function updateComparisonCounter(count) {
+        const counter = document.getElementById('comparison-counter');
+        if (counter) {
+            counter.textContent = count > 0 ? ` (${count})` : '';
+        }
+    }
+
+    /**
+     * Limpia la lista de comparación del localStorage y recarga la tabla.
+     */
+    function clearComparison() {
+        localStorage.removeItem('comparisonProducts');
+        loadComparisonTable(); 
+        updateComparisonCounter(0); 
+    }
+
+    /**
+     * Carga y renderiza la tabla de comparación a partir de localStorage.
+     */
+    function loadComparisonTable() {
+        const productIds = JSON.parse(localStorage.getItem('comparisonProducts') || '[]');
+        const products = productIds.map(id => getProductData(id)).filter(p => p !== null);
+
+        const tableBody = document.querySelector('.comparison-table tbody');
+        const tableHeadRow = document.querySelector('.comparison-table thead tr');
+        const clearButton = document.getElementById('comparison-clear-btn');
+        
+        tableBody.innerHTML = '';
+        tableHeadRow.innerHTML = '<th>Características</th>'; // Resetear encabezado
+
+        if (products.length === 0) {
+            tableBody.innerHTML = '<tr><td class="feature-cell" colspan="5" style="text-align:center; padding: 50px;">No has seleccionado productos para comparar. Ve a la <a href="index.html" style="color:var(--color-accent);">página de inicio</a> para empezar.</td></tr>';
+            clearButton.style.display = 'none';
+            return;
+        }
+        
+        clearButton.style.display = 'inline-block';
+        
+        // --- 1. Definición de Características a Mostrar ---
+        const features = [
+            { key: 'name', label: 'Nombre del Modelo', type: 'product-title' },
+            { key: 'price', label: '<i class="fas fa-dollar-sign"></i> Precio IT HYT', type: 'price-cell' },
+            { key: 'processor', label: '<i class="fas fa-microchip"></i> Procesador / Espec. Principal', type: 'data' },
+            { key: 'ram', label: '<i class="fas fa-memory"></i> Memoria RAM / Conectividad', type: 'data' },
+            { key: 'storage', label: '<i class="fas fa-hdd"></i> Almacenamiento / Detalles', type: 'data' },
+            { key: 'action', label: 'Acción', type: 'buy-link' }
+        ];
+
+        // --- 2. Poblar Encabezado (TH) ---
+        for (let i = 0; i < 4; i++) {
+            const headerCell = document.createElement('th');
+            if (products[i]) {
+                // Producto A, B, C, D (muestra una parte del nombre para que quepa)
+                headerCell.textContent = products[i].name.split(' ').slice(0, 3).join(' ') + (products[i].name.split(' ').length > 3 ? '...' : ''); 
+            } else {
+                headerCell.textContent = `Producto VACÍO`;
+            }
+            tableHeadRow.appendChild(headerCell);
+        }
+        
+        // --- 3. Poblar Filas (TD) ---
+        features.forEach(feature => {
+            const row = document.createElement('tr');
+            
+            // Celda de Característica (primera columna)
+            const featureCell = document.createElement('td');
+            featureCell.classList.add('feature-cell');
+            featureCell.innerHTML = feature.label;
+            row.appendChild(featureCell);
+
+            // Celdas de Datos de Producto (4 columnas)
+            for (let i = 0; i < 4; i++) {
+                const product = products[i];
+                const dataCell = document.createElement('td');
+                
+                if (product) {
+                    if (feature.key === 'action') {
+                        dataCell.classList.add('buy-link');
+                        dataCell.innerHTML = `<a href="#">AÑADIR A CARRITO</a>`;
+                    } else {
+                        dataCell.classList.add(feature.type);
+                        const value = product[feature.key] || '-'; 
+                        dataCell.innerHTML = value;
+                    }
+                } else {
+                    // Celdas para huecos vacíos
+                    dataCell.textContent = '-';
+                    if (feature.key === 'name') dataCell.textContent = 'VACÍO';
+                    if (feature.key === 'action') dataCell.innerHTML = '-';
+                }
+                row.appendChild(dataCell);
+            }
+            tableBody.appendChild(row);
+        });
+        updateComparisonCounter(products.length);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Lógica de menú móvil
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainMenu = document.getElementById('main-menu');
+
+        if (menuToggle && mainMenu) {
+            menuToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                mainMenu.classList.toggle('open');
+            });
+        }
+    });
+
+    // La función loadComparisonTable() se llama en el body onload para que se ejecute al cargar.
+</script>
+</body>
+</html>
