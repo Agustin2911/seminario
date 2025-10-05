@@ -1,19 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IT HYT - HOME</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         /* Definición de Colores */
         :root {
-            --color-primary: #000000; /* Negro Oscuro (Fondo Navbar) */
-            --color-secondary: #ffffff; /* Blanco */
-            --color-accent: #5e35b1; /* Púrpura Vibrante */
-            --color-light-gray: #f5f5f5; /* Gris Claro (Fondo cuerpo, tarjetas) */
-            --color-text-dark: #333333; /* Texto principal oscuro */
-            --color-success: #25d366; /* Verde para WhatsApp/Éxito */
+            --color-primary: #000000;
+            /* Negro Oscuro (Fondo Navbar) */
+            --color-secondary: #ffffff;
+            /* Blanco */
+            --color-accent: #5e35b1;
+            /* Púrpura Vibrante */
+            --color-light-gray: #f5f5f5;
+            /* Gris Claro (Fondo cuerpo, tarjetas) */
+            --color-text-dark: #333333;
+            /* Texto principal oscuro */
+            --color-success: #25d366;
+            /* Verde para WhatsApp/Éxito */
         }
 
         /* Reset Básico y Tipografía */
@@ -51,6 +58,7 @@
         .navbar-main .logo {
             color: var(--color-secondary);
             font-size: 1.5em;
+
             font-weight: bold;
             flex-basis: 150px;
             flex-grow: 1;
@@ -70,9 +78,10 @@
             border: none;
             border-radius: 4px 0 0 4px;
         }
-        
+
         .navbar-search-btn {
             background-color: var(--color-accent);
+
             color: var(--color-secondary);
             border: none;
             cursor: pointer;
@@ -80,17 +89,20 @@
             padding: 10px 15px;
             border-radius: 0 4px 4px 0;
         }
+
         .navbar-search-btn:hover {
             background-color: #4b298c;
         }
 
         .navbar-icons {
             flex-basis: 250px;
+
             display: flex;
             justify-content: flex-end;
             align-items: center;
             flex-shrink: 0;
         }
+
         .navbar-icons a {
             margin-left: 20px;
             font-size: 0.9em;
@@ -99,19 +111,11 @@
             color: var(--color-secondary);
             white-space: nowrap;
         }
+
         .navbar-icons a i {
             margin-right: 5px;
         }
-        .navbar-icons .comp-link {
-            /* Mantener como en el original */
-        }
-        #comparison-counter {
-            color: var(--color-success);
-            font-weight: bold;
-            margin-left: 5px;
-        }
-        
-        /* Menú de Categorías (Barra Púrpura) */
+
         .navbar-menu {
             background-color: var(--color-accent);
             display: flex;
@@ -123,22 +127,22 @@
         .navbar-menu a {
             color: var(--color-secondary);
             padding: 0 15px;
+
             font-size: 0.9em;
             text-transform: uppercase;
         }
-        
+
         .navbar-menu .right-link {
             margin-left: auto;
         }
-        /* Fin de Estilos del Navbar */
 
-        /* 2. Contenido de la Home (No Modificado) */
+        /* 2. Contenido de la Home */
         .hero {
             background-color: var(--color-primary);
             padding: 50px 20px;
             text-align: center;
-            /* Se recomienda usar una ruta de imagen real o la etiqueta  */
-            background-image: url('data:image/jpeg;base64,...'); /* Placeholder for image_389ed1.jpg */
+            background-image: url("data:image/jpeg;base64,...");
+            /* Placeholder */
             background-size: cover;
             background-position: center;
             height: 300px;
@@ -146,10 +150,12 @@
             align-items: center;
             justify-content: space-between;
         }
+
         .hero-content {
             text-align: left;
             margin-left: 10%;
         }
+
         .hero-content .tag {
             background-color: var(--color-accent);
             color: var(--color-secondary);
@@ -158,15 +164,18 @@
             display: inline-block;
             margin-bottom: 10px;
         }
+
         .hero-content h2 {
             color: var(--color-secondary);
             font-size: 3em;
             margin: 0;
         }
+
         .hero-content p {
             color: #ddd;
             font-size: 1.2em;
         }
+
         .slider-arrow {
             color: var(--color-secondary);
             font-size: 3em;
@@ -174,58 +183,110 @@
             padding: 0 20px;
         }
 
-        /* 3. Ofertas de la Semana (No Modificado) */
+        /* Barra de información */
+        .info-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: var(--color-secondary);
+            padding: 20px 10px;
+            border-bottom: 1px solid #e0e0e0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--color-text-dark);
+        }
+
+        .info-item i {
+            font-size: 2.5em;
+            color: var(--color-accent);
+        }
+
+        .info-item .info-text h4 {
+            margin: 0;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        .info-item .info-text p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* Ofertas */
         .offers-section {
             max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
         }
+
         .offers-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
+
         .offers-header h2 {
             font-size: 2em;
             color: var(--color-primary);
         }
+
         .offers-header a {
             color: var(--color-accent);
             font-weight: bold;
             text-transform: uppercase;
             font-size: 0.9em;
         }
+
         .product-grid {
             display: grid;
+
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
+
         .product-card {
             background-color: var(--color-secondary);
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             text-align: center;
             padding: 20px;
         }
-        .product-card .img-placeholder {
+
+        /* IMG real para los productos */
+        .product-card img {
+            width: 100%;
             height: 150px;
+            /* igual que el placeholder anterior */
+            object-fit: contain;
+            /* no deformar */
             background-color: var(--color-light-gray);
             margin-bottom: 15px;
+            display: block;
         }
+
         .product-card h3 {
             font-size: 1.1em;
             color: var(--color-text-dark);
             margin-bottom: 5px;
             height: 40px;
         }
+
         .product-card .price {
             font-size: 1.5em;
             font-weight: bold;
             color: var(--color-accent);
             margin-bottom: 15px;
         }
+
         .product-card .buy-btn {
             background-color: var(--color-primary);
             color: var(--color-secondary);
@@ -235,11 +296,11 @@
             margin-bottom: 10px;
             transition: background-color 0.2s;
         }
+
         .product-card .buy-btn:hover {
             background-color: #4b4b4b;
         }
 
-        /* === AJUSTE DE TAMAÑO DEL BOTÓN DE COMPARACIÓN === */
         .compare-btn {
             background-color: #ddd;
             color: var(--color-text-dark);
@@ -249,6 +310,7 @@
             font-size: 0.9em;
             transition: background-color 0.2s;
             padding: 8px 15px;
+
             min-height: 38px;
             box-sizing: border-box;
             display: flex;
@@ -264,10 +326,8 @@
             min-height: 38px;
             box-sizing: border-box;
         }
-        /* ================================================== */
 
-
-        /* 4. WhatsApp Flotante (No Modificado) */
+        /* WhatsApp Flotante */
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -286,27 +346,26 @@
             align-items: center;
         }
 
-        /* ---------------------------------------------------- */
-        /* 5. ESTILOS RESPONSIVE APLICADOS */
-        /* ---------------------------------------------------- */
-
-        /* Tabletas y Pantallas Medianas (Max 992px) */
+        /* Responsive */
         @media (max-width: 992px) {
             .navbar-main {
                 flex-wrap: wrap;
                 justify-content: space-between;
             }
+
             .navbar-main .logo {
                 flex-basis: auto;
                 text-align: left;
                 margin-bottom: 0;
             }
+
             .navbar-search {
                 order: 3;
                 flex-basis: 100%;
                 max-width: 100%;
                 margin: 10px 0;
             }
+
             .navbar-icons {
                 order: 2;
                 flex-basis: auto;
@@ -314,24 +373,33 @@
                 margin-top: 0;
                 flex-grow: 1;
             }
+
             .navbar-icons a {
                 margin-left: 15px;
                 font-size: 0.9em;
             }
+
             .navbar-menu {
                 flex-wrap: wrap;
                 justify-content: flex-start;
                 padding: 10px 20px;
             }
+
             .navbar-menu a {
                 padding: 5px 10px;
             }
+
             .hero-content h2 {
                 font-size: 2.5em;
             }
+
+            .info-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+            }
         }
 
-        /* Móviles (Max 576px) - SOLUCIÓN PARA EL NAVBAR */
         @media (max-width: 576px) {
             .top-banner {
                 font-size: 0.7em;
@@ -342,14 +410,14 @@
                 align-items: center;
                 padding: 15px 10px;
             }
+
             .navbar-main .logo {
                 flex-basis: 100%;
                 text-align: center;
                 margin-bottom: 15px;
                 order: 1;
             }
-            
-            /* Contenedor de Íconos: Se mueve al centro y se apila */
+
             .navbar-icons {
                 order: 2;
                 flex-direction: column;
@@ -357,6 +425,7 @@
                 align-items: center;
                 margin-top: 5px;
             }
+
             .navbar-icons a {
                 margin: 5px 0;
                 font-size: 0.9em;
@@ -364,33 +433,35 @@
                 text-align: center;
                 justify-content: center;
             }
+
             .navbar-icons a i {
                 margin-right: 8px;
             }
 
-            /* Barra de Búsqueda: Se coloca debajo de los íconos */
             .navbar-search {
                 order: 3;
                 flex-basis: 100%;
                 margin: 15px 0 0 0;
             }
 
-            /* Menú de Categorías (Barra Púrpura) */
             .navbar-menu {
                 flex-direction: column;
                 text-align: center;
                 padding: 10px 10px;
             }
+
             .navbar-menu a {
                 display: block;
                 padding: 8px 0;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             }
+
             .navbar-menu a:last-child {
                 border-bottom: none;
             }
+
             .navbar-menu .right-link {
-                margin-left: 0; /* Asegurar que no quede a la derecha en móvil */
+                margin-left: 0;
             }
 
             .whatsapp-float {
@@ -401,10 +472,81 @@
                 font-size: 24px;
             }
         }
+
+        /* Pop-up */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--color-secondary);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 2001;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .popup h3 {
+            margin-top: 0;
+            color: var(--color-accent);
+            font-size: 1.8em;
+        }
+
+        .popup p {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .popup .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 2em;
+            color: #888;
+            cursor: pointer;
+        }
+
+        .popup .popup-btn {
+            background-color: var(--color-accent);
+            color: var(--color-secondary);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.2s;
+            display: inline-block;
+        }
+
+        .popup .popup-btn:hover {
+            background-color: #4b298c;
+        }
+
+        .popup-overlay.show,
+        .popup.show {
+            display: block;
+        }
     </style>
 </head>
+
 <body>
-    
     <header>
         <div class="top-banner">
             Compras a partir de $600.000 envío GRATIS a CABA y GBA
@@ -412,13 +554,16 @@
         <div class="navbar-main">
             <a href="index.html" class="logo">IT HYT</a>
             <div class="navbar-search">
-                <input type="text" placeholder="¿Qué estás buscando?">
-                <button class="navbar-search-btn"><i class="fas fa-search"></i></button>
+                <input type="text" placeholder="¿Qué estás buscando?" />
+                <button class="navbar-search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
             <div class="navbar-icons">
                 <a href="#"><i class="fas fa-sign-in-alt"></i>INGRESAR</a>
                 <a href="#"><i class="fas fa-heart"></i>FAVORITOS</a>
-                <a href="comparador.html" class="comp-link"><i class="fas fa-balance-scale"></i>COMPARAR<span id="comparison-counter"></span></a>
+                <a href="comparador.html" class="comp-link"><i class="fas fa-balance-scale"></i>COMPARAR<span
+                        id="comparison-counter"></span></a>
                 <a href="#"><i class="fas fa-shopping-cart"></i>CARRITO</a>
             </div>
         </div>
@@ -429,7 +574,7 @@
             <a href="#" class="right-link">VENDE NUESTRAS MARCAS</a>
         </nav>
     </header>
-    
+
     <main>
         <section class="hero">
             <i class="fas fa-chevron-left slider-arrow"></i>
@@ -441,7 +586,36 @@
             <i class="fas fa-chevron-right slider-arrow"></i>
         </section>
 
-<section class="offers-section">
+        <section class="info-bar">
+            <div class="info-item">
+                <i class="fas fa-credit-card"></i>
+                <div class="info-text">
+                    <h4>Pagá como quieras</h4>
+                    <p>
+                        Visa, Mastercard, Amex, Naraja X, Cuenta DNI y Mercado Pago.
+                        ¡Hasta 12 cuotas sin interés!
+                    </p>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-truck-fast"></i>
+                <div class="info-text">
+                    <h4>Recibilo donde estés</h4>
+                    <p>Envíos a todo el país. Retiro GRATIS en nuestras sucursales.</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-shield-alt"></i>
+                <div class="info-text">
+                    <h4>Comprá con seguridad</h4>
+                    <p>
+                        12 meses de garantía oficial y soporte técnico especializado 24/7.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="offers-section">
             <div class="offers-header">
                 <h2>🔥 Ofertas de la Semana</h2>
                 <a href="#">VER TODAS <i class="fas fa-arrow-right"></i></a>
@@ -449,117 +623,184 @@
 
             <div class="product-grid">
                 <div class="product-card" data-product-id="prod-001">
-                    <div class="img-placeholder">IMAGEN DEL PRODUCTO</div>
+                    <img src="imagenes/monitor.jpg" alt="Monitor UltraWide 34 144Hz" />
                     <h3>Monitor UltraWide 34" 144Hz</h3>
                     <p class="price">$589.999</p>
                     <a href="#" class="buy-btn">COMPRAR</a>
-                    <button class="compare-btn" onclick="toggleComparison(this)">Añadir a Comparar</button>
+                    <button class="compare-btn" onclick="toggleComparison(this)">
+                        Añadir a Comparar
+                    </button>
                 </div>
 
                 <div class="product-card" data-product-id="prod-002">
-                    <div class="img-placeholder">IMAGEN DEL PRODUCTO</div>
+                    <img src="imagenes/teclado.jpg" alt="Teclado Mecánico RGB Pro" />
                     <h3>Teclado Mecánico RGB Pro</h3>
                     <p class="price">$45.500</p>
                     <a href="#" class="buy-btn">COMPRAR</a>
-                    <button class="compare-btn" onclick="toggleComparison(this)">Añadir a Comparar</button>
+                    <button class="compare-btn" onclick="toggleComparison(this)">
+                        Añadir a Comparar
+                    </button>
                 </div>
-                
+
                 <div class="product-card" data-product-id="prod-003">
-                    <div class="img-placeholder">IMAGEN DEL PRODUCTO</div>
+                    <img src="imagenes/camara.jpg" alt="Webcam 4K con Autoenfoque" />
                     <h3>Webcam 4K con Autoenfoque</h3>
                     <p class="price">$85.000</p>
                     <a href="#" class="buy-btn">COMPRAR</a>
-                    <button class="compare-btn" onclick="toggleComparison(this)">Añadir a Comparar</button>
+                    <button class="compare-btn" onclick="toggleComparison(this)">
+                        Añadir a Comparar
+                    </button>
                 </div>
 
                 <div class="product-card" data-product-id="prod-004">
-                    <div class="img-placeholder">IMAGEN DEL PRODUCTO</div>
+                    <img src="imagenes/ergonomico.jpg" alt="Mouse Ergonómico Inalámbrico" />
                     <h3>Mouse Ergonómico Inalámbrico</h3>
                     <p class="price">$19.999</p>
                     <a href="#" class="buy-btn">COMPRAR</a>
-                    <button class="compare-btn" onclick="toggleComparison(this)">Añadir a Comparar</button>
+                    <button class="compare-btn" onclick="toggleComparison(this)">
+                        Añadir a Comparar
+                    </button>
                 </div>
 
                 <div class="product-card" data-product-id="prod-005">
-                    <div class="img-placeholder">IMAGEN DEL PRODUCTO</div>
-                    <h3>Mouse Ergonómico Inalámbrico</h3>
-                    <p class="price">$19.999</p>
+                    <img src="imagenes/mousepad.png" alt="Mousepad Gamer XL" />
+                    <h3>Mousepad Gamer XL</h3>
+                    <p class="price">$12.500</p>
                     <a href="#" class="buy-btn">COMPRAR</a>
-                    <button class="compare-btn" onclick="toggleComparison(this)">Añadir a Comparar</button>
+                    <button class="compare-btn" onclick="toggleComparison(this)">
+                        Añadir a Comparar
+                    </button>
                 </div>
 
                 <div class="product-card" data-product-id="prod-006">
-                    <div class="img-placeholder">IMAGEN DEL PRODUCTO</div>
-                    <h3>auriculares  Inalámbrico</h3>
+                    <img src="imagenes/auriculares.jpg" alt="Auriculares Inalámbricos" />
+                    <h3>auriculares Inalámbrico</h3>
+
                     <p class="price">$95.999</p>
+
                     <a href="#" class="buy-btn">COMPRAR</a>
-                    <button class="compare-btn" onclick="toggleComparison(this)">Añadir a Comparar</button>
+                    <button class="compare-btn" onclick="toggleComparison(this)">
+                        Añadir a Comparar
+                    </button>
                 </div>
 
                 <div class="product-card" data-product-id="prod-007">
-                    <div class="img-placeholder">IMAGEN DEL PRODUCTO</div>
-                    <h3>Mouse logitech </h3>
+                    <img src="imagenes/Logitech.jpg" alt="Mouse Logitech" />
+                    <h3>Mouse logitech</h3>
                     <p class="price">$49.999</p>
                     <a href="#" class="buy-btn">COMPRAR</a>
-                    <button class="compare-btn" onclick="toggleComparison(this)">Añadir a Comparar</button>
+                    <button class="compare-btn" onclick="toggleComparison(this)">
+                        Añadir a Comparar
+                    </button>
                 </div>
             </div>
-        </section>    </main>
+        </section>
+    </main>
 
     <a href="https://wa.me/" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <div id="cart-popup-overlay" class="popup-overlay"></div>
+    <div id="cart-popup" class="popup">
+        <button id="close-popup-btn" class="close-btn">&times;</button>
+        <h3>¡Recordatorio!</h3>
+        <p>
+            Tenés cosas pendientes en el carrito esperándote, ¡no las abandones!
+        </p>
+        <a href="#" class="popup-btn">Ir al Carrito</a>
+    </div>
+
     <script>
         // Función para actualizar el contador de comparación (tomado de faq.html)
         function updateComparisonCounter(count) {
-            const counter = document.getElementById('comparison-counter');
+            const counter = document.getElementById("comparison-counter");
             if (counter) {
-                counter.textContent = count > 0 ? ` (${count})` : '';
+                counter.textContent = count > 0 ? ` (${count})` : "";
             }
         }
 
         // Función para manejar la lógica de comparación
         function toggleComparison(button) {
-            const productId = button.closest('.product-card').getAttribute('data-product-id');
-            let comparisonProducts = JSON.parse(localStorage.getItem('comparisonProducts') || '[]');
-
+            const productId = button
+                .closest(".product-card")
+                .getAttribute("data-product-id");
+            let comparisonProducts = JSON.parse(
+                localStorage.getItem("comparisonProducts") || "[]",
+            );
             const index = comparisonProducts.indexOf(productId);
 
             if (index === -1) {
-                // Añadir al comparador
                 comparisonProducts.push(productId);
-                button.classList.add('selected-for-comp');
+                button.classList.add("selected-for-comp");
                 button.innerHTML = '<i class="fas fa-check"></i> Comparando';
             } else {
-                // Quitar del comparador
                 comparisonProducts.splice(index, 1);
-                button.classList.remove('selected-for-comp');
-                button.innerHTML = 'Añadir a Comparar';
+
+                button.classList.remove("selected-for-comp");
+                button.innerHTML = "Añadir a Comparar";
             }
 
-            localStorage.setItem('comparisonProducts', JSON.stringify(comparisonProducts));
+            localStorage.setItem(
+                "comparisonProducts",
+                JSON.stringify(comparisonProducts),
+            );
             updateComparisonCounter(comparisonProducts.length);
         }
 
         // Inicializar el contador y el estado de los botones al cargar
-        document.addEventListener('DOMContentLoaded', () => {
-            const comparisonProducts = JSON.parse(localStorage.getItem('comparisonProducts') || '[]');
+        document.addEventListener("DOMContentLoaded", () => {
+            const comparisonProducts = JSON.parse(
+                localStorage.getItem("comparisonProducts") || "[]",
+            );
             updateComparisonCounter(comparisonProducts.length);
 
-            document.querySelectorAll('.product-card').forEach(card => {
-                const productId = card.getAttribute('data-product-id');
-                const button = card.querySelector('.compare-btn');
-                
+            document.querySelectorAll(".product-card").forEach((card) => {
+                const productId = card.getAttribute("data-product-id");
+                const button = card.querySelector(".compare-btn");
                 if (comparisonProducts.includes(productId)) {
-                    button.classList.add('selected-for-comp');
+                    button.classList.add("selected-for-comp");
                     button.innerHTML = '<i class="fas fa-check"></i> Comparando';
                 } else {
-                    button.classList.remove('selected-for-comp');
-                    button.innerHTML = 'Añadir a Comparar';
+                    button.classList.remove("selected-for-comp");
+                    button.innerHTML = "Añadir a Comparar";
                 }
             });
+
+            // --- POP-UP carrito ---
+            const popup = document.getElementById("cart-popup");
+
+            const overlay = document.getElementById("cart-popup-overlay");
+            const closeBtn = document.getElementById("close-popup-btn");
+
+            function showCartPopup() {
+                if (popup && overlay) {
+                    overlay.classList.add("show");
+                    popup.classList.add("show");
+                }
+            }
+
+            function hideCartPopup() {
+                if (popup && overlay) {
+                    overlay.classList.remove("show");
+                    popup.classList.remove("show");
+                }
+            }
+
+            if (closeBtn) closeBtn.addEventListener("click", hideCartPopup);
+            if (overlay) overlay.addEventListener("click", hideCartPopup);
+
+            let pageVisits = sessionStorage.getItem("pageVisits");
+            let currentVisitCount = pageVisits ? parseInt(pageVisits, 10) : 0;
+            currentVisitCount++;
+            sessionStorage.setItem("pageVisits", currentVisitCount);
+
+            if (currentVisitCount === 3) {
+                setTimeout(showCartPopup, 1500);
+            }
+            // --- fin POP-UP ---
         });
     </script>
 </body>
+
 </html>

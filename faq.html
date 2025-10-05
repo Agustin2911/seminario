@@ -1,19 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FAQ | IT HYT</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         /* Definición de Colores */
         :root {
-            --color-primary: #000000; /* Negro Oscuro (Fondo Navbar) */
-            --color-secondary: #ffffff; /* Blanco */
-            --color-accent: #5e35b1; /* Azul/Púrpura Vibrante */
-            --color-light-gray: #f5f5f5; /* Gris Claro (Fondo cuerpo, acordeón) */
-            --color-success: #25d366; /* Verde para WhatsApp */
-            --color-text-dark: #333333; /* Texto principal oscuro */
+            --color-primary: #000000;
+            /* Negro Oscuro (Fondo Navbar) */
+            --color-secondary: #ffffff;
+            /* Blanco */
+            --color-accent: #5e35b1;
+            /* Azul/Púrpura Vibrante */
+            --color-light-gray: #f5f5f5;
+            /* Gris Claro (Fondo cuerpo, acordeón) */
+            --color-success: #25d366;
+            /* Verde para WhatsApp */
+
+            --color-text-dark: #333333;
+            /* Texto principal oscuro */
         }
 
         /* Reset Básico y Tipografía */
@@ -22,7 +30,8 @@
             margin: 0;
             padding: 0;
             background-color: var(--color-secondary);
-            color: var(--color-text-dark); /* Añadido color de texto base */
+            color: var(--color-text-dark);
+            /* Añadido color de texto base */
         }
 
         a {
@@ -67,7 +76,7 @@
             border: none;
             border-radius: 4px 0 0 4px;
         }
-        
+
         .navbar-search-btn {
             background-color: var(--color-accent);
             color: var(--color-secondary);
@@ -77,33 +86,37 @@
             padding: 10px 15px;
             border-radius: 0 4px 4px 0;
         }
+
         .navbar-search-btn:hover {
             background-color: #4b298c;
         }
 
         .navbar-icons {
-            flex-basis: 250px; 
+            flex-basis: 250px;
             display: flex;
             justify-content: flex-end;
-            align-items: center; 
+            align-items: center;
         }
+
         .navbar-icons a {
             margin-left: 20px;
             font-size: 0.9em;
             display: inline-block;
             color: var(--color-secondary);
-            white-space: nowrap; 
+            white-space: nowrap;
         }
+
         .navbar-icons .comp-link {
             display: flex;
             align-items: center;
         }
+
         #comparison-counter {
-            color: var(--color-success); 
+            color: var(--color-success);
             font-weight: bold;
             margin-left: 5px;
         }
-        
+
         /* Menú de Categorías (Barra Azul/Púrpura) */
         .navbar-menu {
             background-color: var(--color-accent);
@@ -119,7 +132,7 @@
             font-size: 0.9em;
             text-transform: uppercase;
         }
-        
+
         .navbar-menu .right-link {
             margin-left: auto;
         }
@@ -127,6 +140,7 @@
         /* 3. Contenido Principal de FAQ */
         .faq-container {
             max-width: 1200px;
+
             margin: 40px auto;
             padding: 0 20px;
         }
@@ -143,6 +157,7 @@
             justify-content: center;
             align-items: stretch;
             margin-bottom: 40px;
+
             padding: 0 10px;
         }
 
@@ -152,7 +167,7 @@
             border: 1px solid #ccc;
             border-right: none;
             border-radius: 8px 0 0 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             flex-grow: 1;
             max-width: 700px;
         }
@@ -184,7 +199,8 @@
             font-weight: bold;
             transition: background-color 0.2s;
             cursor: pointer;
-            display: flex; 
+            display: flex;
+
             align-items: center;
             gap: 10px;
         }
@@ -199,16 +215,18 @@
             border-radius: 0 5px 5px 0;
             position: relative;
             left: 10px;
+
             margin-left: -10px;
         }
 
         .faq-main {
             flex-grow: 1;
         }
-        
+
         .accordion-item {
             border: 1px solid #ddd;
             margin-bottom: 10px;
+
             border-radius: 6px;
             overflow: hidden;
         }
@@ -219,6 +237,7 @@
             padding: 15px 20px;
             cursor: pointer;
             display: flex;
+
             justify-content: space-between;
             align-items: center;
             font-weight: bold;
@@ -228,7 +247,7 @@
         .accordion-question:hover {
             background-color: #e0e0e0;
         }
-        
+
         .accordion-icon {
             color: var(--color-accent);
             font-size: 1.2em;
@@ -248,6 +267,7 @@
         .faq-group.active {
             display: block;
         }
+
         /* Clase para ocultar elementos que no coinciden con la búsqueda */
         .accordion-item.hidden-by-search {
             display: none;
@@ -263,6 +283,7 @@
             background-color: var(--color-success);
             color: var(--color-secondary);
             border-radius: 50px;
+
             text-align: center;
             font-size: 30px;
             box-shadow: 2px 2px 3px #999;
@@ -271,24 +292,69 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         /* 5. Estilos Responsive (Ajustados) */
 
         @media (max-width: 992px) {
-            .navbar-main { flex-wrap: wrap; justify-content: center; }
-            .navbar-main .logo { flex-basis: 100%; text-align: center; margin-bottom: 10px; }
-            .navbar-search { order: 3; width: 100%; max-width: 100%; margin: 0 10px; }
-            .navbar-icons { order: 2; flex-basis: auto; justify-content: center; margin-top: 10px; }
-            .navbar-icons a { margin: 0 10px; font-size: 0.8em; }
-            .navbar-menu { flex-wrap: wrap; justify-content: center; padding: 10px 10px; }
-            .navbar-menu a { padding: 5px 8px; }
+            .navbar-main {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .navbar-main .logo {
+                flex-basis: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            .navbar-search {
+                order: 3;
+                width: 100%;
+                max-width: 100%;
+                margin: 0 10px;
+            }
+
+            .navbar-icons {
+                order: 2;
+                flex-basis: auto;
+                justify-content: center;
+                margin-top: 10px;
+            }
+
+            .navbar-icons a {
+                margin: 0 10px;
+                font-size: 0.8em;
+            }
+
+            .navbar-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 10px 10px;
+            }
+
+            .navbar-menu a {
+                padding: 5px 8px;
+            }
         }
 
         @media (max-width: 768px) {
-            .faq-container { margin: 20px auto; padding: 0 10px; }
-            .faq-content { flex-direction: column; gap: 15px; }
-            .faq-header h1 { font-size: 2em; }
-            .faq-search-bar { margin-bottom: 20px; }
+            .faq-container {
+                margin: 20px auto;
+                padding: 0 10px;
+            }
+
+            .faq-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .faq-header h1 {
+                font-size: 2em;
+            }
+
+            .faq-search-bar {
+                margin-bottom: 20px;
+            }
 
             .faq-sidebar {
                 width: 100%;
@@ -299,12 +365,15 @@
                 margin-bottom: 20px;
                 border-radius: 0;
             }
+
             .faq-sidebar a {
                 padding: 8px 15px;
+
                 border-radius: 5px;
                 margin-right: 5px;
                 flex-shrink: 0;
             }
+
             .faq-sidebar a.active {
                 left: 0;
                 margin-left: 0;
@@ -313,19 +382,132 @@
         }
 
         @media (max-width: 576px) {
-            .navbar-main .logo { flex-basis: 50%; text-align: left; margin-bottom: 0; }
-            .navbar-icons { flex-basis: 50%; justify-content: flex-end; }
-            .navbar-search { margin: 10px 0; order: 3; }
-            .navbar-icons { flex-direction: column; align-items: flex-end; margin-top: 0; }
-            .navbar-icons a { margin: 2px 0; font-size: 0.75em; width: auto; text-align: right; }
-            .navbar-menu { display: block; text-align: center; }
-            .navbar-menu a { display: block; padding: 5px 0; }
-            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 24px; }
+            .navbar-main .logo {
+                flex-basis: 50%;
+                text-align: left;
+                margin-bottom: 0;
+            }
+
+            .navbar-icons {
+                flex-basis: 50%;
+                justify-content: flex-end;
+            }
+
+            .navbar-search {
+                margin: 10px 0;
+                order: 3;
+            }
+
+            .navbar-icons {
+                flex-direction: column;
+                align-items: flex-end;
+                margin-top: 0;
+            }
+
+            .navbar-icons a {
+                margin: 2px 0;
+                font-size: 0.75em;
+                width: auto;
+                text-align: right;
+            }
+
+            .navbar-menu {
+                display: block;
+                text-align: center;
+            }
+
+            .navbar-menu a {
+                display: block;
+                padding: 5px 0;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 24px;
+            }
         }
+
+        /* === INICIO CÓDIGO AÑADIDO: ESTILOS PARA EL POP-UP === */
+        .popup-overlay {
+            display: none;
+            /* Oculto por defecto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+        }
+
+        .popup {
+            display: none;
+            /* Oculto por defecto */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--color-secondary);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 2001;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .popup h3 {
+            margin-top: 0;
+            color: var(--color-accent);
+            font-size: 1.8em;
+        }
+
+        .popup p {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .popup .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 2em;
+            color: #888;
+            cursor: pointer;
+        }
+
+        .popup .popup-btn {
+            background-color: var(--color-accent);
+            color: var(--color-secondary);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.2s;
+            display: inline-block;
+        }
+
+        .popup .popup-btn:hover {
+            background-color: #4b298c;
+        }
+
+        .popup-overlay.show,
+        .popup.show {
+            display: block;
+        }
+
+        /* === FIN CÓDIGO AÑADIDO === */
     </style>
 </head>
-<body>
 
+<body>
     <header>
         <div class="top-banner">
             Compras a partir de $600.000 envío GRATIS a CABA y GBA
@@ -333,8 +515,10 @@
         <div class="navbar-main">
             <a href="index.html" class="logo">IT HYT</a>
             <div class="navbar-search">
-                <input type="text" placeholder="¿Qué estás buscando?">
-                <button class="navbar-search-btn"><i class="fas fa-search"></i></button>
+                <input type="text" placeholder="¿Qué estás buscando?" />
+                <button class="navbar-search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
             <div class="navbar-icons">
                 <a href="#">INGRESAR</a>
@@ -350,40 +534,53 @@
             <a href="#" class="right-link">VENDE NUESTRAS MARCAS</a>
         </nav>
     </header>
-    
+
     <main class="faq-container">
         <div class="faq-header">
             <h1>PREGUNTAS FRECUENTES (FAQ)</h1>
         </div>
 
         <div class="faq-search-bar">
-            <input type="text" id="faq-search-input" onkeyup="searchFAQ()" placeholder="Busca tu pregunta aquí (Ej: Devolución, Seguimiento de Envío)...">
+            <input type="text" id="faq-search-input" onkeyup="searchFAQ()"
+                placeholder="Busca tu pregunta aquí (Ej: Devolución, Seguimiento de Envío)..." />
             <button class="navbar-search-btn"><i class="fas fa-search"></i></button>
         </div>
 
         <div class="faq-content">
-            
             <aside class="faq-sidebar">
-                <a href="#" class="sidebar-link active" data-target="envios-entregas"><i class="fas fa-truck"></i> Envíos y Entregas</a>
-                <a href="#" class="sidebar-link" data-target="metodos-pago"><i class="fas fa-credit-card"></i> Métodos de Pago</a>
-                <a href="#" class="sidebar-link" data-target="cambios-devoluciones"><i class="fas fa-undo-alt"></i> Cambios y Devoluciones</a>
-                <a href="#" class="sidebar-link" data-target="productos-garantias"><i class="fas fa-laptop"></i> Productos y Garantías</a>
-                <a href="#" class="sidebar-link" data-target="mi-cuenta-pedidos"><i class="fas fa-user-circle"></i> Mi Cuenta y Pedidos</a>
+                <a href="#" class="sidebar-link active" data-target="envios-entregas"><i class="fas fa-truck"></i>
+                    Envíos y Entregas</a>
+                <a href="#" class="sidebar-link" data-target="metodos-pago"><i class="fas fa-credit-card"></i> Métodos
+                    de Pago</a>
+                <a href="#" class="sidebar-link" data-target="cambios-devoluciones"><i class="fas fa-undo-alt"></i>
+                    Cambios y Devoluciones</a>
+                <a href="#" class="sidebar-link" data-target="productos-garantias"><i class="fas fa-laptop"></i>
+                    Productos y Garantías</a>
+                <a href="#" class="sidebar-link" data-target="mi-cuenta-pedidos"><i class="fas fa-user-circle"></i> Mi
+                    Cuenta y Pedidos</a>
             </aside>
 
             <section class="faq-main">
-                
                 <div id="envios-entregas" class="faq-group active">
                     <h2>Envíos y Entregas</h2>
-                    
+
                     <div class="accordion-item">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
                             <span>¿Cuál es el costo y el tiempo de envío?</span>
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
-                            <p>El costo de envío se calcula al momento de finalizar la compra, dependiendo de tu ubicación y el peso/volumen de los productos. Ofrecemos **envío GRATIS a CABA y GBA** en compras superiores a $600.000.</p>
-                            <p>Los plazos de entrega son: **CABA/GBA:** 24 a 48 horas hábiles. **Interior del país:** 3 a 7 días hábiles.</p>
+                            <p>
+                                El costo de envío se calcula al momento de finalizar la
+                                compra, dependiendo de tu ubicación y el peso/volumen de los
+                                productos. Ofrecemos **envío GRATIS a CABA y GBA** en compras
+                                superiores a $600.000.
+                            </p>
+
+                            <p>
+                                Los plazos de entrega son: **CABA/GBA:** 24 a 48 horas
+                                hábiles. **Interior del país:** 3 a 7 días hábiles.
+                            </p>
                         </div>
                     </div>
 
@@ -393,31 +590,50 @@
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
-                            <p>Una vez que tu pedido es despachado, recibirás un correo electrónico con el **código de seguimiento** y un enlace directo a la página de nuestro operador logístico (OCA/Correo Argentino/Propio). Este enlace se activará entre 4 y 12 horas después del despacho.</p>
+                            <p>
+                                Una vez que tu pedido es despachado, recibirás un correo
+                                electrónico con el **código de seguimiento** y un enlace
+                                directo a la página de nuestro operador logístico (OCA/Correo
+                                Argentino/Propio). Este enlace se activará entre 4 y 12 horas
+                                después del despacho.
+                            </p>
                         </div>
                     </div>
-                    
+
                     <div class="accordion-item">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
                             <span>¿Puedo retirar mi compra personalmente?</span>
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
-                            <p>Sí, puedes seleccionar la opción "Retiro en Sucursal" durante el proceso de compra. Nuestro punto de retiro se encuentra en el barrio de Belgrano, CABA. Recibirás un aviso cuando tu pedido esté listo para ser retirado (generalmente 24 horas después de la compra).</p>
+                            <p>
+                                Sí, puedes seleccionar la opción "Retiro en Sucursal" durante
+                                el proceso de compra. Nuestro punto de retiro se encuentra en
+                                el barrio de Belgrano, CABA. Recibirás un aviso cuando tu
+                                pedido esté listo para ser retirado (generalmente 24 horas
+                                después de la compra).
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <div id="metodos-pago" class="faq-group">
                     <h2>Métodos de Pago</h2>
-                    
+
                     <div class="accordion-item">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
                             <span>¿Qué tarjetas de crédito y bancos aceptan para cuotas?</span>
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
+
                         <div class="accordion-answer">
-                            <p>Aceptamos todas las tarjetas de crédito (Visa, Mastercard, Amex, Cabal) a través de **Mercado Pago** y **Todo Pago**. Puedes ver las promociones vigentes de cuotas sin interés con bancos específicos en la sección de "Oportunidades" o al momento de ingresar los datos de tu tarjeta en el checkout.</p>
+                            <p>
+                                Aceptamos todas las tarjetas de crédito (Visa, Mastercard,
+                                Amex, Cabal) a través de **Mercado Pago** y **Todo Pago**.
+                                Puedes ver las promociones vigentes de cuotas sin interés con
+                                bancos específicos en la sección de "Oportunidades" o al
+                                momento de ingresar los datos de tu tarjeta en el checkout.
+                            </p>
                         </div>
                     </div>
 
@@ -427,31 +643,49 @@
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
-                            <p>Sí. Ofrecemos un **10% de descuento** por pagos realizados mediante **Transferencia Bancaria**. También puedes pagar en efectivo en puntos de cobro como Rapipago o Pago Fácil generando un código a través de Mercado Pago al finalizar tu compra.</p>
+                            <p>
+                                Sí. Ofrecemos un **10% de descuento** por pagos realizados
+                                mediante **Transferencia Bancaria**. También puedes pagar en
+                                efectivo en puntos de cobro como Rapipago o Pago Fácil
+                                generando un código a través de Mercado Pago al finalizar tu
+                                compra.
+                            </p>
                         </div>
                     </div>
-                    
+
                     <div class="accordion-item">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
                             <span>¿Qué hago si mi pago es rechazado?</span>
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
-                            <p>El rechazo de un pago es un proceso ajeno a IT HYT. Generalmente se debe a: fondos insuficientes, error en el ingreso de datos, o un bloqueo de seguridad de tu banco. Te recomendamos verificar los datos, comunicarte con tu banco o intentar con otro medio de pago.</p>
+                            <p>
+                                El rechazo de un pago es un proceso ajeno a IT HYT.
+                                Generalmente se debe a: fondos insuficientes, error en el
+                                ingreso de datos, o un bloqueo de seguridad de tu banco. Te
+                                recomendamos verificar los datos, comunicarte con tu banco o
+                                intentar con otro medio de pago.
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <div id="cambios-devoluciones" class="faq-group">
                     <h2>Cambios y Devoluciones</h2>
-                    
+
                     <div class="accordion-item">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
-                            <span>¿Cuál es el plazo para solicitar un cambio o devolución?</span>
+                            <span>¿Cuál es el plazo para solicitar un cambio o
+                                devolución?</span>
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
+
                         <div class="accordion-answer">
-                            <p>Tienes **10 días corridos** desde la recepción del producto para solicitar un cambio o la devolución total del dinero. El producto debe estar en su empaque original, sellado y sin uso.</p>
+                            <p>
+                                Tienes **10 días corridos** desde la recepción del producto
+                                para solicitar un cambio o la devolución total del dinero. El
+                                producto debe estar en su empaque original, sellado y sin uso.
+                            </p>
                         </div>
                     </div>
 
@@ -461,59 +695,87 @@
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
-                            <p>Debes enviar un correo a **devoluciones@ithyt.com** indicando tu número de pedido y el motivo de la devolución. Nuestro equipo te enviará en 24 horas la etiqueta de envío prepaga para que puedas despacharlo sin costo desde cualquier sucursal de correo.</p>
+                            <p>
+                                Debes enviar un correo a **devoluciones@ithyt.com** indicando
+                                tu número de pedido y el motivo de la devolución. Nuestro
+                                equipo te enviará en 24 horas la etiqueta de envío prepaga
+                                para que puedas despacharlo sin costo desde cualquier sucursal
+                                de correo.
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <div id="productos-garantias" class="faq-group">
                     <h2>Productos y Garantías</h2>
-                    
+
                     <div class="accordion-item">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
-                            <span>¿Todos los productos tienen garantía? ¿Por cuánto tiempo?</span>
+                            <span>¿Todos los productos tienen garantía? ¿Por cuánto
+                                tiempo?</span>
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
-                            <p>Sí, todos nuestros productos son nuevos y tienen una **garantía oficial de 12 meses** con el fabricante. IT HYT ofrece una garantía directa de 30 días contra cualquier defecto de fábrica desde la fecha de recepción. Pasado ese lapso, la gestión es directamente con la marca.</p>
+                            <p>
+                                Sí, todos nuestros productos son nuevos y tienen una
+                                **garantía oficial de 12 meses** con el fabricante. IT HYT
+                                ofrece una garantía directa de 30 días contra cualquier
+                                defecto de fábrica desde la fecha de recepción. Pasado ese
+                                lapso, la gestión es directamente con la marca.
+                            </p>
                         </div>
                     </div>
-                    
+
                     <div class="accordion-item">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
                             <span>¿Son productos originales o reacondicionados?</span>
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
-                            <p>Todos los productos vendidos en IT HYT son **100% originales**, nuevos y vienen en caja sellada de fábrica. Solo vendemos equipos de primera línea y de las marcas líderes en tecnología.</p>
+                            <p>
+                                Todos los productos vendidos en IT HYT son **100%
+                                originales**, nuevos y vienen en caja sellada de fábrica. Solo
+                                vendemos equipos de primera línea y de las marcas líderes en
+                                tecnología.
+                            </p>
                         </div>
                     </div>
                 </div>
-                
+
                 <div id="mi-cuenta-pedidos" class="faq-group">
                     <h2>Mi Cuenta y Pedidos</h2>
-                    
+
                     <div class="accordion-item">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
                             <span>Olvidé mi contraseña, ¿cómo la recupero?</span>
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
-                            <p>En la sección "INGRESAR" haz clic en "¿Olvidaste tu contraseña?". Se te pedirá ingresar el correo electrónico asociado a tu cuenta. Recibirás un enlace para establecer una nueva clave de acceso.</p>
+                            <p>
+                                En la sección "INGRESAR" haz clic en "¿Olvidaste tu
+                                contraseña?". Se te pedirá ingresar el correo electrónico
+                                asociado a tu cuenta. Recibirás un enlace para establecer una
+                                nueva clave de acceso.
+                            </p>
                         </div>
                     </div>
-                    
+
                     <div class="accordion-item">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
                             <span>¿Puedo cancelar o modificar un pedido ya realizado?</span>
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
-                            <p>Puedes solicitar la cancelación de un pedido **sólo si aún no ha sido despachado**. Contáctanos inmediatamente por WhatsApp o al 0800-TECH-HYT. Una vez que el estado sea "En Camino", ya no es posible cancelarlo; deberás iniciar un proceso de devolución una vez recibido.</p>
+                            <p>
+                                Puedes solicitar la cancelación de un pedido **sólo si aún no
+                                ha sido despachado**. Contáctanos inmediatamente por WhatsApp
+                                o al 0800-TECH-HYT. Una vez que el estado sea "En Camino", ya
+                                no es posible cancelarlo; deberás iniciar un proceso de
+                                devolución una vez recibido.
+                            </p>
                         </div>
                     </div>
                 </div>
-
             </section>
         </div>
     </main>
@@ -522,32 +784,49 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <div id="cart-popup-overlay" class="popup-overlay"></div>
+    <div id="cart-popup" class="popup">
+        <button id="close-popup-btn" class="close-btn">&times;</button>
+        <h3>¡Recordatorio!</h3>
+        <p>
+            Tenés cosas pendientes en el carrito esperándote, ¡no las abandones!
+        </p>
+        <a href="#" class="popup-btn">Ir al Carrito</a>
+    </div>
     <script>
         /**
-         * Función para alternar la visualización de las respuestas del acordeón.
-         */
+    
+             * Función para alternar la visualización de las respuestas del acordeón.
+             */
         function toggleAnswer(element) {
             const answer = element.nextElementSibling;
-            const icon = element.querySelector('.accordion-icon');
-            
+            const icon = element.querySelector(".accordion-icon");
+
             // Cierra otras respuestas abiertas en el grupo activo
-            document.querySelectorAll('.faq-group.active .accordion-answer').forEach(ans => {
-                if (ans !== answer && ans.style.display === "block") {
-                    ans.style.display = "none";
-                    ans.previousElementSibling.querySelector('.accordion-icon').classList.remove('fa-minus');
-                    ans.previousElementSibling.querySelector('.accordion-icon').classList.add('fa-plus');
-                }
-            });
-            
+            document
+                .querySelectorAll(".faq-group.active .accordion-answer")
+                .forEach((ans) => {
+                    if (ans !== answer && ans.style.display === "block") {
+                        ans.style.display = "none";
+                        ans.previousElementSibling
+                            .querySelector(".accordion-icon")
+                            .classList.remove("fa-minus");
+                        ans.previousElementSibling
+                            .querySelector(".accordion-icon")
+                            .classList.add("fa-plus");
+                    }
+                });
+
             // Abre o cierra la respuesta actual
             if (answer.style.display === "block") {
                 answer.style.display = "none";
-                icon.classList.remove('fa-minus');
-                icon.classList.add('fa-plus');
+                icon.classList.remove("fa-minus");
+                icon.classList.add("fa-plus");
             } else {
                 answer.style.display = "block";
-                icon.classList.remove('fa-plus');
-                icon.classList.add('fa-minus');
+
+                icon.classList.remove("fa-plus");
+                icon.classList.add("fa-minus");
             }
         }
 
@@ -555,111 +834,179 @@
          * Función del Motor de Búsqueda: Filtra las preguntas por texto.
          */
         function searchFAQ() {
-            const input = document.getElementById('faq-search-input');
+            const input = document.getElementById("faq-search-input");
             const filter = input.value.toUpperCase();
-            const items = document.querySelectorAll('.accordion-item');
+            const items = document.querySelectorAll(".accordion-item");
 
-            items.forEach(item => {
-                const questionText = item.querySelector('.accordion-question span').textContent.toUpperCase();
-                const answerText = item.querySelector('.accordion-answer').textContent.toUpperCase();
-                
+            items.forEach((item) => {
+                const questionText = item
+                    .querySelector(".accordion-question span")
+                    .textContent.toUpperCase();
+                const answerText = item
+                    .querySelector(".accordion-answer")
+                    .textContent.toUpperCase();
+
                 if (questionText.includes(filter) || answerText.includes(filter)) {
-                    item.classList.remove('hidden-by-search');
+                    item.classList.remove("hidden-by-search");
                 } else {
-                    item.classList.add('hidden-by-search');
+                    item.classList.add("hidden-by-search");
                 }
             });
 
             // Oculta grupos si no tienen preguntas visibles (opcional, pero mejora la vista)
-            document.querySelectorAll('.faq-group').forEach(group => {
-                const visibleItems = group.querySelectorAll('.accordion-item:not(.hidden-by-search)').length;
-                group.style.display = visibleItems > 0 ? 'block' : 'none';
+            document.querySelectorAll(".faq-group").forEach((group) => {
+                const visibleItems = group.querySelectorAll(
+                    ".accordion-item:not(.hidden-by-search)",
+                ).length;
+                group.style.display = visibleItems > 0 ? "block" : "none";
             });
 
             // Desactiva el sidebar al buscar para que se vean todos los resultados
             if (filter.length > 0) {
-                 document.querySelectorAll('.faq-group').forEach(group => group.classList.add('active'));
-                 document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+                document
+                    .querySelectorAll(".faq-group")
+                    .forEach((group) => group.classList.add("active"));
+                document
+                    .querySelectorAll(".sidebar-link")
+                    .forEach((l) => l.classList.remove("active"));
             } else {
                 // Si el campo de búsqueda está vacío, reactiva la vista por categoría
-                const firstLink = document.querySelector('.faq-sidebar a:first-child');
-                const firstTargetId = firstLink.getAttribute('data-target');
-                
-                document.querySelectorAll('.faq-group').forEach(group => group.classList.remove('active'));
-                document.getElementById(firstTargetId).classList.add('active');
-                firstLink.classList.add('active');
-                
-                document.querySelectorAll('.faq-group').forEach(group => group.style.display = 'none');
-                document.getElementById(firstTargetId).style.display = 'block';
+                const firstLink = document.querySelector(
+                    ".faq-sidebar a:first-child",
+                );
+                const firstTargetId = firstLink.getAttribute("data-target");
+
+                document
+                    .querySelectorAll(".faq-group")
+                    .forEach((group) => group.classList.remove("active"));
+                document.getElementById(firstTargetId).classList.add("active");
+
+                firstLink.classList.add("active");
+
+                document
+                    .querySelectorAll(".faq-group")
+                    .forEach((group) => (group.style.display = "none"));
+                document.getElementById(firstTargetId).style.display = "block";
             }
-            
+
             // Asegúrate de que las respuestas estén cerradas cuando se filtra
-            document.querySelectorAll('.accordion-answer').forEach(ans => ans.style.display = "none");
-            document.querySelectorAll('.accordion-icon').forEach(icon => {
-                icon.classList.remove('fa-minus');
-                icon.classList.add('fa-plus');
+            document
+                .querySelectorAll(".accordion-answer")
+                .forEach((ans) => (ans.style.display = "none"));
+            document.querySelectorAll(".accordion-icon").forEach((icon) => {
+                icon.classList.remove("fa-minus");
+                icon.classList.add("fa-plus");
             });
         }
 
-
         /**
-         * Función de ayuda para actualizar el contador del carrito (basada en el index.html)
-         */
+             * Función de ayuda para actualizar el contador del carrito (basada en el index.html)
+    
+             */
         function updateComparisonCounter(count) {
-            const counter = document.getElementById('comparison-counter');
+            const counter = document.getElementById("comparison-counter");
             if (counter) {
-                counter.textContent = count > 0 ? ` (${count})` : '';
+                counter.textContent = count > 0 ? ` (${count})` : "";
             }
         }
 
         /**
-         * Lógica de inicialización al cargar la página
-         */
-        document.addEventListener('DOMContentLoaded', () => {
+             * Lógica de inicialización al cargar la página
+    
+             */
+        document.addEventListener("DOMContentLoaded", () => {
             // Inicializar el contador
-            const comparisonProducts = JSON.parse(localStorage.getItem('comparisonProducts') || '[]');
+            const comparisonProducts = JSON.parse(
+                localStorage.getItem("comparisonProducts") || "[]",
+            );
             updateComparisonCounter(comparisonProducts.length);
-            
+
             // Inicializar la vista del FAQ (solo el primer grupo activo)
-            const activeTarget = document.querySelector('.faq-sidebar a.active')?.getAttribute('data-target');
+            const activeTarget = document
+                .querySelector(".faq-sidebar a.active")
+                ?.getAttribute("data-target");
             if (activeTarget) {
-                document.getElementById(activeTarget).classList.add('active');
-                document.getElementById(activeTarget).style.display = 'block';
+                document.getElementById(activeTarget).classList.add("active");
+                document.getElementById(activeTarget).style.display = "block";
             }
 
             // Manejar clics en el sidebar
-            document.querySelectorAll('.sidebar-link').forEach(link => {
-                link.addEventListener('click', (e) => {
+            document.querySelectorAll(".sidebar-link").forEach((link) => {
+                link.addEventListener("click", (e) => {
                     e.preventDefault();
-                    
+
                     // Resetear el campo de búsqueda y la visibilidad de ítems
-                    document.getElementById('faq-search-input').value = '';
-                    document.querySelectorAll('.accordion-item').forEach(item => item.classList.remove('hidden-by-search'));
+                    document.getElementById("faq-search-input").value = "";
+                    document
+                        .querySelectorAll(".accordion-item")
+                        .forEach((item) => item.classList.remove("hidden-by-search"));
 
                     // Cambiar el estado activo del sidebar
-                    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
+                    document
+                        .querySelectorAll(".sidebar-link")
+                        .forEach((l) => l.classList.remove("active"));
+                    link.classList.add("active");
 
                     // Mostrar/Ocultar los grupos de FAQ
-                    document.querySelectorAll('.faq-group').forEach(group => {
-                        group.classList.remove('active');
-                        group.style.display = 'none'; // Asegura que solo se vea el activo
+                    document.querySelectorAll(".faq-group").forEach((group) => {
+                        group.classList.remove("active");
+                        group.style.display = "none"; // Asegura que solo se vea el activo
                     });
-                    const targetId = link.getAttribute('data-target');
+                    const targetId = link.getAttribute("data-target");
+
                     const targetGroup = document.getElementById(targetId);
-                    targetGroup.classList.add('active');
-                    targetGroup.style.display = 'block';
-                    
+                    targetGroup.classList.add("active");
+                    targetGroup.style.display = "block";
+
                     // Asegúrate de cerrar todas las respuestas al cambiar de grupo
-                    document.querySelectorAll('.accordion-answer').forEach(ans => ans.style.display = "none");
-                    document.querySelectorAll('.accordion-icon').forEach(icon => {
-                        icon.classList.remove('fa-minus');
-                        icon.classList.add('fa-plus');
+                    document
+                        .querySelectorAll(".accordion-answer")
+                        .forEach((ans) => (ans.style.display = "none"));
+
+                    document.querySelectorAll(".accordion-icon").forEach((icon) => {
+                        icon.classList.remove("fa-minus");
+                        icon.classList.add("fa-plus");
                     });
                 });
             });
+
+            // --- INICIO CÓDIGO AÑADIDO: LÓGICA DEL POP-UP ---
+            const popup = document.getElementById("cart-popup");
+            const overlay = document.getElementById("cart-popup-overlay");
+            const closeBtn = document.getElementById("close-popup-btn");
+
+            function showCartPopup() {
+                if (popup && overlay) {
+                    overlay.classList.add("show");
+
+                    popup.classList.add("show");
+                }
+            }
+
+            function hideCartPopup() {
+                if (popup && overlay) {
+                    overlay.classList.remove("show");
+                    popup.classList.remove("show");
+                }
+            }
+
+            if (closeBtn) closeBtn.addEventListener("click", hideCartPopup);
+            if (overlay) overlay.addEventListener("click", hideCartPopup);
+
+            // Contador de visitas de página
+            let pageVisits = sessionStorage.getItem("pageVisits");
+            let currentVisitCount = pageVisits ? parseInt(pageVisits, 10) : 0;
+
+            currentVisitCount++;
+            sessionStorage.setItem("pageVisits", currentVisitCount);
+
+            // Si es la tercera visita, mostrar el pop-up
+            if (currentVisitCount === 3) {
+                setTimeout(showCartPopup, 1500);
+            }
+            // --- FIN CÓDIGO AÑADIDO ---
         });
-        
     </script>
 </body>
+
 </html>
