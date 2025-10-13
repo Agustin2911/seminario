@@ -7,31 +7,21 @@
     <title>FAQ | IT HYT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
-        /* Definición de Colores */
         :root {
             --color-primary: #000000;
-            /* Negro Oscuro (Fondo Navbar) */
             --color-secondary: #ffffff;
-            /* Blanco */
             --color-accent: #5e35b1;
-            /* Azul/Púrpura Vibrante */
             --color-light-gray: #f5f5f5;
-            /* Gris Claro (Fondo cuerpo, acordeón) */
             --color-success: #25d366;
-            /* Verde para WhatsApp */
-
             --color-text-dark: #333333;
-            /* Texto principal oscuro */
         }
 
-        /* Reset Básico y Tipografía */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--color-secondary);
             color: var(--color-text-dark);
-            /* Añadido color de texto base */
         }
 
         a {
@@ -39,7 +29,6 @@
             color: var(--color-secondary);
         }
 
-        /* 1. Navbar y Encabezado */
         .top-banner {
             background-color: var(--color-primary);
             color: var(--color-secondary);
@@ -117,7 +106,6 @@
             margin-left: 5px;
         }
 
-        /* Menú de Categorías (Barra Azul/Púrpura) */
         .navbar-menu {
             background-color: var(--color-accent);
             display: flex;
@@ -137,10 +125,8 @@
             margin-left: auto;
         }
 
-        /* 3. Contenido Principal de FAQ */
         .faq-container {
             max-width: 1200px;
-
             margin: 40px auto;
             padding: 0 20px;
         }
@@ -157,7 +143,6 @@
             justify-content: center;
             align-items: stretch;
             margin-bottom: 40px;
-
             padding: 0 10px;
         }
 
@@ -200,7 +185,6 @@
             transition: background-color 0.2s;
             cursor: pointer;
             display: flex;
-
             align-items: center;
             gap: 10px;
         }
@@ -215,7 +199,6 @@
             border-radius: 0 5px 5px 0;
             position: relative;
             left: 10px;
-
             margin-left: -10px;
         }
 
@@ -226,7 +209,6 @@
         .accordion-item {
             border: 1px solid #ddd;
             margin-bottom: 10px;
-
             border-radius: 6px;
             overflow: hidden;
         }
@@ -237,7 +219,6 @@
             padding: 15px 20px;
             cursor: pointer;
             display: flex;
-
             justify-content: space-between;
             align-items: center;
             font-weight: bold;
@@ -268,12 +249,10 @@
             display: block;
         }
 
-        /* Clase para ocultar elementos que no coinciden con la búsqueda */
         .accordion-item.hidden-by-search {
             display: none;
         }
 
-        /* 4. WhatsApp Flotante */
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -283,7 +262,6 @@
             background-color: var(--color-success);
             color: var(--color-secondary);
             border-radius: 50px;
-
             text-align: center;
             font-size: 30px;
             box-shadow: 2px 2px 3px #999;
@@ -292,8 +270,6 @@
             justify-content: center;
             align-items: center;
         }
-
-        /* 5. Estilos Responsive (Ajustados) */
 
         @media (max-width: 992px) {
             .navbar-main {
@@ -368,7 +344,6 @@
 
             .faq-sidebar a {
                 padding: 8px 15px;
-
                 border-radius: 5px;
                 margin-right: 5px;
                 flex-shrink: 0;
@@ -430,10 +405,8 @@
             }
         }
 
-        /* === INICIO CÓDIGO AÑADIDO: ESTILOS PARA EL POP-UP === */
         .popup-overlay {
             display: none;
-            /* Oculto por defecto */
             position: fixed;
             top: 0;
             left: 0;
@@ -445,7 +418,6 @@
 
         .popup {
             display: none;
-            /* Oculto por defecto */
             position: fixed;
             top: 50%;
             left: 50%;
@@ -502,8 +474,6 @@
         .popup.show {
             display: block;
         }
-
-        /* === FIN CÓDIGO AÑADIDO === */
     </style>
 </head>
 
@@ -522,8 +492,8 @@
             </div>
             <div class="navbar-icons">
                 <a href="#">INGRESAR</a>
+
                 <a href="#">FAVORITOS</a>
-                <a href="comparador.html" class="comp-link">COMPARAR<span id="comparison-counter"></span></a>
                 <a href="#">CARRITO</a>
             </div>
         </div>
@@ -531,6 +501,8 @@
             <a href="#">CATEGORÍAS <i class="fas fa-caret-down"></i></a>
             <a href="#">OPORTUNIDADES</a>
             <a href="faq.html">PREGUNTAS FRECUENTES</a>
+            <a href="comparador.html" class="comp-link"><i class="fas fa-balance-scale"></i> COMPARAR<span
+                    id="comparison-counter"></span></a>
             <a href="#" class="right-link">VENDE NUESTRAS MARCAS</a>
         </nav>
     </header>
@@ -561,155 +533,124 @@
             </aside>
 
             <section class="faq-main">
+                <!-- === Envíos y Entregas === -->
                 <div id="envios-entregas" class="faq-group active">
                     <h2>Envíos y Entregas</h2>
 
-                    <div class="accordion-item">
+                    <div class="accordion-item"
+                        data-keywords="costo,envio,envios,tiempo,tarda,cuanto,tardanza,valor,precio,cuesta,demora,demoras,demorar,entrega,entregas,plazo,plazos">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
                             <span>¿Cuál es el costo y el tiempo de envío?</span>
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
                             <p>
-                                El costo de envío se calcula al momento de finalizar la
-                                compra, dependiendo de tu ubicación y el peso/volumen de los
-                                productos. Ofrecemos **envío GRATIS a CABA y GBA** en compras
+                                El costo de envío se calcula al finalizar la compra. Ofrecemos
+                                <strong>envío GRATIS a CABA y GBA</strong> en compras
                                 superiores a $600.000.
                             </p>
-
                             <p>
-                                Los plazos de entrega son: **CABA/GBA:** 24 a 48 horas
-                                hábiles. **Interior del país:** 3 a 7 días hábiles.
+                                Plazos: <strong>CABA/GBA</strong> 24–48 h hábiles.
+                                <strong>Interior</strong> 3–7 días hábiles.
                             </p>
                         </div>
                     </div>
 
-                    <div class="accordion-item">
+                    <div class="accordion-item"
+                        data-keywords="seguimiento,tracking,ver,estado,paquete,orden,pedido,numero,codigo,localizar,rastrear,entrega,cuando,llega,llegada">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
                             <span>¿Cómo hago el seguimiento de mi pedido?</span>
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
                             <p>
-                                Una vez que tu pedido es despachado, recibirás un correo
-                                electrónico con el **código de seguimiento** y un enlace
-                                directo a la página de nuestro operador logístico (OCA/Correo
-                                Argentino/Propio). Este enlace se activará entre 4 y 12 horas
-                                después del despacho.
+                                Te enviamos por mail el
+                                <strong>código de seguimiento</strong> y el enlace al operador
+                                logístico (se activa entre 4 y 12 h tras el despacho).
                             </p>
                         </div>
                     </div>
 
-                    <div class="accordion-item">
+                    <div class="accordion-item"
+                        data-keywords="retiro,sucursal,retirar,personalmente,local,cuando,tiempo,horario,dir,direccion,belgrano">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
                             <span>¿Puedo retirar mi compra personalmente?</span>
+
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
                             <p>
-                                Sí, puedes seleccionar la opción "Retiro en Sucursal" durante
-                                el proceso de compra. Nuestro punto de retiro se encuentra en
-                                el barrio de Belgrano, CABA. Recibirás un aviso cuando tu
-                                pedido esté listo para ser retirado (generalmente 24 horas
-                                después de la compra).
+                                Seleccioná “Retiro en Sucursal”. Punto de retiro en Belgrano,
+                                CABA. Avisamos cuando esté listo (aprox. 24 h).
                             </p>
                         </div>
                     </div>
                 </div>
 
+                <!-- === Métodos de Pago === -->
                 <div id="metodos-pago" class="faq-group">
                     <h2>Métodos de Pago</h2>
 
-                    <div class="accordion-item">
+                    <div class="accordion-item"
+                        data-keywords="tarjetas,tarjeta,credito,debito,cuotas,bancos,interes,promocion,mp,mercado,pago,todo,pago,financiacion,aceptan,aceptamos,acepta,acepto">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
                             <span>¿Qué tarjetas de crédito y bancos aceptan para cuotas?</span>
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
-
                         <div class="accordion-answer">
                             <p>
-                                Aceptamos todas las tarjetas de crédito (Visa, Mastercard,
-                                Amex, Cabal) a través de **Mercado Pago** y **Todo Pago**.
-                                Puedes ver las promociones vigentes de cuotas sin interés con
-                                bancos específicos en la sección de "Oportunidades" o al
-                                momento de ingresar los datos de tu tarjeta en el checkout.
+                                Tarjetas: Visa, Mastercard, Amex, Cabal mediante
+                                <strong>Mercado Pago</strong> y <strong>Todo Pago</strong>.
+                                Promos de cuotas sin interés según banco, visibles en el
+                                checkout.
                             </p>
                         </div>
                     </div>
 
-                    <div class="accordion-item">
+                    <div class="accordion-item"
+                        data-keywords="efectivo,transferencia,descuento,rapipago,pago,facil,codigo,transf,deposito,contado">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
                             <span>¿Puedo pagar en efectivo o por transferencia?</span>
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
                             <p>
-                                Sí. Ofrecemos un **10% de descuento** por pagos realizados
-                                mediante **Transferencia Bancaria**. También puedes pagar en
-                                efectivo en puntos de cobro como Rapipago o Pago Fácil
-                                generando un código a través de Mercado Pago al finalizar tu
-                                compra.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <div class="accordion-question" onclick="toggleAnswer(this)">
-                            <span>¿Qué hago si mi pago es rechazado?</span>
-                            <i class="fas fa-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-answer">
-                            <p>
-                                El rechazo de un pago es un proceso ajeno a IT HYT.
-                                Generalmente se debe a: fondos insuficientes, error en el
-                                ingreso de datos, o un bloqueo de seguridad de tu banco. Te
-                                recomendamos verificar los datos, comunicarte con tu banco o
-                                intentar con otro medio de pago.
+                                10% de descuento por <strong>transferencia bancaria</strong>.
+                                También efectivo en Rapipago/Pago Fácil generando un código
+                                por Mercado Pago.
                             </p>
                         </div>
                     </div>
                 </div>
 
+                <!-- === Cambios y Devoluciones === -->
+
                 <div id="cambios-devoluciones" class="faq-group">
                     <h2>Cambios y Devoluciones</h2>
 
-                    <div class="accordion-item">
+                    <div class="accordion-item"
+                        data-keywords="cambio,devolucion,devolver,plazo,tiempo,garantia,arrepentimiento,refund,politica,condiciones">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
                             <span>¿Cuál es el plazo para solicitar un cambio o
                                 devolución?</span>
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
-
                         <div class="accordion-answer">
                             <p>
-                                Tienes **10 días corridos** desde la recepción del producto
-                                para solicitar un cambio o la devolución total del dinero. El
-                                producto debe estar en su empaque original, sellado y sin uso.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <div class="accordion-question" onclick="toggleAnswer(this)">
-                            <span>¿Cómo inicio el proceso de devolución de un artículo?</span>
-                            <i class="fas fa-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-answer">
-                            <p>
-                                Debes enviar un correo a **devoluciones@ithyt.com** indicando
-                                tu número de pedido y el motivo de la devolución. Nuestro
-                                equipo te enviará en 24 horas la etiqueta de envío prepaga
-                                para que puedas despacharlo sin costo desde cualquier sucursal
-                                de correo.
+                                Tenés <strong>10 días corridos</strong> desde la recepción
+                                para cambio o devolución. Producto sin uso y con empaque
+                                original.
                             </p>
                         </div>
                     </div>
                 </div>
 
+                <!-- === Productos y Garantías === -->
                 <div id="productos-garantias" class="faq-group">
                     <h2>Productos y Garantías</h2>
 
-                    <div class="accordion-item">
+                    <div class="accordion-item"
+                        data-keywords="garantia,garantias,oficial,soporte,defecto,fabrica,meses,cobertura,servicio,tecnico,marca">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
                             <span>¿Todos los productos tienen garantía? ¿Por cuánto
                                 tiempo?</span>
@@ -717,61 +658,29 @@
                         </div>
                         <div class="accordion-answer">
                             <p>
-                                Sí, todos nuestros productos son nuevos y tienen una
-                                **garantía oficial de 12 meses** con el fabricante. IT HYT
-                                ofrece una garantía directa de 30 días contra cualquier
-                                defecto de fábrica desde la fecha de recepción. Pasado ese
-                                lapso, la gestión es directamente con la marca.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <div class="accordion-question" onclick="toggleAnswer(this)">
-                            <span>¿Son productos originales o reacondicionados?</span>
-                            <i class="fas fa-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-answer">
-                            <p>
-                                Todos los productos vendidos en IT HYT son **100%
-                                originales**, nuevos y vienen en caja sellada de fábrica. Solo
-                                vendemos equipos de primera línea y de las marcas líderes en
-                                tecnología.
+                                Todos los productos son nuevos y cuentan con
+                                <strong>12 meses de garantía oficial</strong>. IT HYT brinda
+                                30 días de garantía directa.
                             </p>
                         </div>
                     </div>
                 </div>
 
+                <!-- === Mi Cuenta y Pedidos === -->
                 <div id="mi-cuenta-pedidos" class="faq-group">
                     <h2>Mi Cuenta y Pedidos</h2>
 
-                    <div class="accordion-item">
+                    <div class="accordion-item"
+                        data-keywords="recuperar,olvidar,clave,contrasena,password,login,ingresar,restablecer,cambiar,correo,mail">
                         <div class="accordion-question" onclick="toggleAnswer(this)">
                             <span>Olvidé mi contraseña, ¿cómo la recupero?</span>
                             <i class="fas fa-plus accordion-icon"></i>
                         </div>
                         <div class="accordion-answer">
                             <p>
-                                En la sección "INGRESAR" haz clic en "¿Olvidaste tu
-                                contraseña?". Se te pedirá ingresar el correo electrónico
-                                asociado a tu cuenta. Recibirás un enlace para establecer una
-                                nueva clave de acceso.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <div class="accordion-question" onclick="toggleAnswer(this)">
-                            <span>¿Puedo cancelar o modificar un pedido ya realizado?</span>
-                            <i class="fas fa-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-answer">
-                            <p>
-                                Puedes solicitar la cancelación de un pedido **sólo si aún no
-                                ha sido despachado**. Contáctanos inmediatamente por WhatsApp
-                                o al 0800-TECH-HYT. Una vez que el estado sea "En Camino", ya
-                                no es posible cancelarlo; deberás iniciar un proceso de
-                                devolución una vez recibido.
+                                En “INGRESAR” elegí “¿Olvidaste tu contraseña?”, ingresá tu
+                                correo y te enviamos un enlace para establecer una nueva
+                                clave.
                             </p>
                         </div>
                     </div>
@@ -780,9 +689,7 @@
         </div>
     </main>
 
-    <a href="https://wa.me/" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <div id="cart-popup-overlay" class="popup-overlay"></div>
     <div id="cart-popup" class="popup">
@@ -791,18 +698,155 @@
         <p>
             Tenés cosas pendientes en el carrito esperándote, ¡no las abandones!
         </p>
+
         <a href="#" class="popup-btn">Ir al Carrito</a>
     </div>
+
     <script>
-        /**
-    
-             * Función para alternar la visualización de las respuestas del acordeón.
-             */
+        /* ==== Normalización y utilidades ==== */
+
+        function normalizeText(s) {
+            return (s || "")
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^a-z0-9ñü\s]/g, " ")
+                .replace(/\s+/g, " ")
+                .trim();
+        }
+        function variants(token) {
+            const v = new Set([token]);
+            if (token.endsWith("es")) v.add(token.slice(0, -2));
+            if (token.endsWith("s")) v.add(token.slice(0, -1));
+            return [...v];
+        }
+        const STOPWORDS = new Set([
+            "el",
+            "la",
+            "los",
+            "las",
+            "de",
+            "del",
+            "y",
+            "en",
+            "a",
+            "un",
+            "una",
+            "unos",
+            "unas",
+            "al",
+            "para",
+            "por",
+            "con",
+            "sin",
+            "se",
+            "su",
+            "sus",
+            "lo",
+            "le",
+            "les",
+            "mi",
+            "mis",
+            "tu",
+            "tus",
+            "es",
+            "son",
+            "o",
+            "u",
+            "ya",
+            "mas",
+            "si",
+            "no",
+            "como",
+            "que",
+        ]);
+
+        /* ==== Índice por pregunta ==== */
+        const QUESTION_INDEX = new Map(); // item -> {auto:Set, manual:Set, all:Set}
+        let INDEX_READY = false;
+
+        function buildQuestionIndex() {
+            if (INDEX_READY) return;
+            INDEX_READY = true;
+
+            document.querySelectorAll(".accordion-item").forEach((item) => {
+                const qText =
+                    item.querySelector(".accordion-question span")?.textContent || "";
+
+                const words = normalizeText(qText)
+                    .split(" ")
+                    .filter((w) => w && !STOPWORDS.has(w) && w.length > 2);
+                const auto = new Set();
+                words.forEach((w) => variants(w).forEach((v) => auto.add(v)));
+
+                const manual = new Set();
+                (item.getAttribute("data-keywords") || "")
+                    .split(",")
+                    .map(normalizeText)
+                    .filter(Boolean)
+                    .forEach((w) => variants(w).forEach((v) => manual.add(v)));
+
+                const all = new Set([...auto, ...manual]);
+                QUESTION_INDEX.set(item, {auto, manual, all});
+            });
+        }
+
+        function tokenMatchesKeyword(token, keyword) {
+            // Coincidencia exacta
+
+            if (token === keyword) return {type: "exact"};
+            // Prefijo (para palabras de 4+ letras)
+
+            if (
+                token.length >= 4 &&
+                (keyword.startsWith(token) || token.startsWith(keyword))
+            )
+                return {type: "prefix"};
+            return null;
+        }
+
+        function scoreItem(item, tokens) {
+            const idx = QUESTION_INDEX.get(item) || {
+                auto: new Set(),
+                manual: new Set(),
+                all: new Set(),
+            };
+            let exactHits = 0,
+                manualHits = 0,
+                prefixHits = 0;
+
+            for (const t of tokens) {
+                for (const k of idx.all) {
+                    const m = tokenMatchesKeyword(t, k);
+                    if (!m) continue;
+
+                    if (m.type === "exact") {
+                        exactHits++;
+                        if (idx.manual.has(k)) manualHits++;
+                        break;
+                    } else if (m.type === "prefix") {
+                        prefixHits++;
+
+                        break;
+                    }
+                }
+            }
+
+            // Regla de decisión:
+            // - Cualquier exacto => pasa
+            // - O match con sinónimos manuales => pasa
+            // - O al menos 2 prefijos (evita falsos positivos) => pasa
+            const passes = exactHits > 0 || manualHits > 0 || prefixHits >= 2;
+
+            // Score simple (para futuros ordenamientos si querés)
+            const score = exactHits * 3 + manualHits * 2 + prefixHits * 1;
+            return {passes, score};
+        }
+
         function toggleAnswer(element) {
             const answer = element.nextElementSibling;
-            const icon = element.querySelector(".accordion-icon");
 
-            // Cierra otras respuestas abiertas en el grupo activo
+            const icon = element.querySelector(".accordion-icon");
             document
                 .querySelectorAll(".faq-group.active .accordion-answer")
                 .forEach((ans) => {
@@ -816,80 +860,30 @@
                             .classList.add("fa-plus");
                     }
                 });
-
-            // Abre o cierra la respuesta actual
             if (answer.style.display === "block") {
                 answer.style.display = "none";
+
                 icon.classList.remove("fa-minus");
                 icon.classList.add("fa-plus");
             } else {
                 answer.style.display = "block";
-
                 icon.classList.remove("fa-plus");
                 icon.classList.add("fa-minus");
             }
         }
 
-        /**
-         * Función del Motor de Búsqueda: Filtra las preguntas por texto.
-         */
         function searchFAQ() {
-            const input = document.getElementById("faq-search-input");
-            const filter = input.value.toUpperCase();
-            const items = document.querySelectorAll(".accordion-item");
+            buildQuestionIndex();
 
-            items.forEach((item) => {
-                const questionText = item
-                    .querySelector(".accordion-question span")
-                    .textContent.toUpperCase();
-                const answerText = item
-                    .querySelector(".accordion-answer")
-                    .textContent.toUpperCase();
+            const normInput = normalizeText(
+                document.getElementById("faq-search-input").value || "",
+            );
+            const tokens = normInput
+                .split(" ")
+                .filter((t) => t && !STOPWORDS.has(t));
 
-                if (questionText.includes(filter) || answerText.includes(filter)) {
-                    item.classList.remove("hidden-by-search");
-                } else {
-                    item.classList.add("hidden-by-search");
-                }
-            });
+            // Reinicio estado visual
 
-            // Oculta grupos si no tienen preguntas visibles (opcional, pero mejora la vista)
-            document.querySelectorAll(".faq-group").forEach((group) => {
-                const visibleItems = group.querySelectorAll(
-                    ".accordion-item:not(.hidden-by-search)",
-                ).length;
-                group.style.display = visibleItems > 0 ? "block" : "none";
-            });
-
-            // Desactiva el sidebar al buscar para que se vean todos los resultados
-            if (filter.length > 0) {
-                document
-                    .querySelectorAll(".faq-group")
-                    .forEach((group) => group.classList.add("active"));
-                document
-                    .querySelectorAll(".sidebar-link")
-                    .forEach((l) => l.classList.remove("active"));
-            } else {
-                // Si el campo de búsqueda está vacío, reactiva la vista por categoría
-                const firstLink = document.querySelector(
-                    ".faq-sidebar a:first-child",
-                );
-                const firstTargetId = firstLink.getAttribute("data-target");
-
-                document
-                    .querySelectorAll(".faq-group")
-                    .forEach((group) => group.classList.remove("active"));
-                document.getElementById(firstTargetId).classList.add("active");
-
-                firstLink.classList.add("active");
-
-                document
-                    .querySelectorAll(".faq-group")
-                    .forEach((group) => (group.style.display = "none"));
-                document.getElementById(firstTargetId).style.display = "block";
-            }
-
-            // Asegúrate de que las respuestas estén cerradas cuando se filtra
             document
                 .querySelectorAll(".accordion-answer")
                 .forEach((ans) => (ans.style.display = "none"));
@@ -897,72 +891,96 @@
                 icon.classList.remove("fa-minus");
                 icon.classList.add("fa-plus");
             });
+
+            if (tokens.length === 0) {
+                // Volver a estado inicial (primer grupo activo)
+                const firstLink = document.querySelector(
+                    ".faq-sidebar a:first-child",
+                );
+                const firstId = firstLink.getAttribute("data-target");
+                document.querySelectorAll(".faq-group").forEach((g) => {
+                    g.classList.remove("active");
+                    g.style.display = "none";
+                });
+
+                document.getElementById(firstId).classList.add("active");
+                document.getElementById(firstId).style.display = "block";
+                document
+                    .querySelectorAll(".sidebar-link")
+                    .forEach((l) => l.classList.remove("active"));
+                firstLink.classList.add("active");
+                // Asegurar todos visibles nuevamente
+                document
+                    .querySelectorAll(".accordion-item")
+                    .forEach((it) => it.classList.remove("hidden-by-search"));
+                return;
+            }
+
+            // En búsqueda: mostrar todos los grupos, filtrar por score
+            document.querySelectorAll(".faq-group").forEach((g) => {
+                g.classList.add("active");
+                g.style.display = "block";
+            });
+            document
+                .querySelectorAll(".sidebar-link")
+                .forEach((l) => l.classList.remove("active"));
+
+            document.querySelectorAll(".accordion-item").forEach((item) => {
+                const {passes} = scoreItem(item, tokens);
+                if (!passes) item.classList.add("hidden-by-search");
+                else item.classList.remove("hidden-by-search");
+            });
+
+            // Ocultar grupos sin resultados
+            document.querySelectorAll(".faq-group").forEach((group) => {
+                const visibleItems = group.querySelectorAll(
+                    ".accordion-item:not(.hidden-by-search)",
+                ).length;
+                group.style.display = visibleItems > 0 ? "block" : "none";
+            });
         }
 
-        /**
-             * Función de ayuda para actualizar el contador del carrito (basada en el index.html)
-    
-             */
         function updateComparisonCounter(count) {
             const counter = document.getElementById("comparison-counter");
-            if (counter) {
-                counter.textContent = count > 0 ? ` (${count})` : "";
-            }
+            if (counter) counter.textContent = count > 0 ? ` (${count})` : "";
         }
 
-        /**
-             * Lógica de inicialización al cargar la página
-    
-             */
         document.addEventListener("DOMContentLoaded", () => {
-            // Inicializar el contador
             const comparisonProducts = JSON.parse(
                 localStorage.getItem("comparisonProducts") || "[]",
             );
             updateComparisonCounter(comparisonProducts.length);
 
-            // Inicializar la vista del FAQ (solo el primer grupo activo)
-            const activeTarget = document
+            const firstTarget = document
                 .querySelector(".faq-sidebar a.active")
                 ?.getAttribute("data-target");
-            if (activeTarget) {
-                document.getElementById(activeTarget).classList.add("active");
-                document.getElementById(activeTarget).style.display = "block";
+            if (firstTarget) {
+                document.getElementById(firstTarget).classList.add("active");
+                document.getElementById(firstTarget).style.display = "block";
             }
 
-            // Manejar clics en el sidebar
             document.querySelectorAll(".sidebar-link").forEach((link) => {
                 link.addEventListener("click", (e) => {
                     e.preventDefault();
-
-                    // Resetear el campo de búsqueda y la visibilidad de ítems
                     document.getElementById("faq-search-input").value = "";
                     document
                         .querySelectorAll(".accordion-item")
                         .forEach((item) => item.classList.remove("hidden-by-search"));
-
-                    // Cambiar el estado activo del sidebar
                     document
                         .querySelectorAll(".sidebar-link")
                         .forEach((l) => l.classList.remove("active"));
                     link.classList.add("active");
-
-                    // Mostrar/Ocultar los grupos de FAQ
                     document.querySelectorAll(".faq-group").forEach((group) => {
                         group.classList.remove("active");
-                        group.style.display = "none"; // Asegura que solo se vea el activo
+                        group.style.display = "none";
                     });
                     const targetId = link.getAttribute("data-target");
-
                     const targetGroup = document.getElementById(targetId);
                     targetGroup.classList.add("active");
                     targetGroup.style.display = "block";
-
-                    // Asegúrate de cerrar todas las respuestas al cambiar de grupo
                     document
                         .querySelectorAll(".accordion-answer")
                         .forEach((ans) => (ans.style.display = "none"));
-
                     document.querySelectorAll(".accordion-icon").forEach((icon) => {
                         icon.classList.remove("fa-minus");
                         icon.classList.add("fa-plus");
@@ -970,7 +988,7 @@
                 });
             });
 
-            // --- INICIO CÓDIGO AÑADIDO: LÓGICA DEL POP-UP ---
+            // Popup (carrito) – sin cambios
             const popup = document.getElementById("cart-popup");
             const overlay = document.getElementById("cart-popup-overlay");
             const closeBtn = document.getElementById("close-popup-btn");
@@ -978,33 +996,24 @@
             function showCartPopup() {
                 if (popup && overlay) {
                     overlay.classList.add("show");
-
                     popup.classList.add("show");
                 }
             }
-
             function hideCartPopup() {
                 if (popup && overlay) {
                     overlay.classList.remove("show");
                     popup.classList.remove("show");
                 }
             }
-
             if (closeBtn) closeBtn.addEventListener("click", hideCartPopup);
             if (overlay) overlay.addEventListener("click", hideCartPopup);
-
-            // Contador de visitas de página
             let pageVisits = sessionStorage.getItem("pageVisits");
             let currentVisitCount = pageVisits ? parseInt(pageVisits, 10) : 0;
-
             currentVisitCount++;
             sessionStorage.setItem("pageVisits", currentVisitCount);
+            if (currentVisitCount === 3) setTimeout(showCartPopup, 1500);
 
-            // Si es la tercera visita, mostrar el pop-up
-            if (currentVisitCount === 3) {
-                setTimeout(showCartPopup, 1500);
-            }
-            // --- FIN CÓDIGO AÑADIDO ---
+            buildQuestionIndex();
         });
     </script>
 </body>

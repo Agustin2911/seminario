@@ -5,12 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Comparador de Productos | IT HYT</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         :root {
             --color-primary: #000000;
             --color-secondary: #ffffff;
+
             --color-accent: #5e35b1;
             --color-light-gray: #f5f5f5;
             --color-text-dark: #333333;
@@ -270,7 +271,6 @@
             background: #4b298c;
         }
 
-        /* Historial de comparaciones guardadas */
         .saved-comparisons {
             margin-top: 32px;
         }
@@ -399,7 +399,7 @@
             }
         }
 
-        /* Popup reutilizado */
+        /* Popup reutilizado (carrito) */
         .popup-overlay {
             display: none;
             position: fixed;
@@ -469,6 +469,73 @@
         .popup .popup-btn:hover {
             background: #4b298c;
         }
+
+        /* === Modal de confirmación para salir del comparador === */
+
+        .confirm-exit-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+
+            z-index: 3000;
+        }
+
+        .confirm-exit {
+            position: fixed;
+            top: 50%;
+
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            width: 92%;
+            max-width: 440px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            padding: 22px 20px;
+            z-index: 3001;
+            display: none;
+            text-align: center;
+        }
+
+        .confirm-exit h4 {
+            margin: 0 0 8px;
+            font-size: 1.2em;
+            color: #111;
+        }
+
+        .confirm-exit p {
+            margin: 0 0 18px;
+            color: #333;
+        }
+
+        .confirm-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .confirm-actions .btn {
+            padding: 10px 14px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-keep {
+            background: var(--color-accent);
+            color: #fff;
+        }
+
+        .btn-leave {
+            background: var(--color-danger);
+            color: #fff;
+        }
+
+        .confirm-exit-overlay.show,
+        .confirm-exit.show {
+            display: block;
+        }
     </style>
 </head>
 
@@ -482,13 +549,11 @@
 
             <div class="navbar-icons">
                 <a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a>
-
                 <a href="#"><i class="fas fa-user"></i> INGRESAR</a>
                 <a href="#"><i class="fas fa-heart"></i> FAVORITOS</a>
-                <a href="comparador.html" class="comp-link"><i class="fas fa-columns"></i> COMPARAR<span
-                        id="comparison-counter"></span></a>
                 <a href="#"><i class="fas fa-shopping-cart"></i> CARRITO</a>
             </div>
+
             <div class="navbar-search">
                 <input type="text" placeholder="Busca productos (ej: iPhone, Notebook HP)..." />
                 <button class="navbar-search-btn">
@@ -500,6 +565,8 @@
             <a href="#">CATEGORÍAS <i class="fas fa-caret-down"></i></a>
             <a href="#">OPORTUNIDADES</a>
             <a href="faq.html">PREGUNTAS FRECUENTES</a>
+            <a href="comparador.html" class="comp-link"><i class="fas fa-columns"></i> COMPARAR<span
+                    id="comparison-counter"></span></a>
             <a href="#" class="right-link">VENDE NUESTRAS MARCAS</a>
         </nav>
     </header>
@@ -507,6 +574,7 @@
     <main class="product-page-container">
         <div class="product-header">
             <h1>Comparador de Productos Seleccionados</h1>
+
             <span class="sku">Compara hasta 4 productos de nuestro catálogo side-by-side</span>
         </div>
 
@@ -543,8 +611,7 @@
 
     <a href="https://wa.me/" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- Popup de carrito (reutilizado del home) -->
-
+    <!-- Popup de carrito (existente) -->
     <div id="cart-popup-overlay" class="popup-overlay"></div>
     <div id="cart-popup" class="popup">
         <button id="close-popup-btn" class="close-btn">&times;</button>
@@ -555,10 +622,24 @@
         <a href="#" class="popup-btn">Ir al Carrito</a>
     </div>
 
+    <!-- Modal de confirmación para salir del comparador -->
+    <div id="confirm-exit-overlay" class="confirm-exit-overlay"></div>
+    <div id="confirm-exit" class="confirm-exit" role="dialog" aria-modal="true" aria-labelledby="confirm-exit-title">
+        <h4 id="confirm-exit-title">¿Salir del comparador?</h4>
+        <p>Si sales de la página ahora se borrará la comparación.</p>
+        <div class="confirm-actions">
+            <button type="button" id="btn-keep" class="btn btn-keep">
+                Seguir comparando
+            </button>
+
+            <button type="button" id="btn-leave" class="btn btn-leave">
+                Salir de todas formas
+            </button>
+        </div>
+    </div>
+
     <script>
-        /* ===========================
-         Datos de productos (mock)
-         =========================== */
+        /* ===== Datos mock ===== */
         function getProductData(productId) {
             const productDatabase = {
                 "prod-001": {
@@ -614,12 +695,10 @@
             return productDatabase[productId] || null;
         }
 
-        /* ===========================
-         Utilidades LocalStorage
-         =========================== */
+        /* ===== LocalStorage ===== */
         const LS_KEYS = {
             CURRENT: "comparisonProducts",
-            SAVED: "savedComparisons", // array de objetos {id, productIds[], createdAt}
+            SAVED: "savedComparisons",
         };
 
         function getCurrentComparison() {
@@ -628,22 +707,17 @@
         function setCurrentComparison(ids) {
             localStorage.setItem(LS_KEYS.CURRENT, JSON.stringify(ids));
         }
-
         function getSavedComparisons() {
             return JSON.parse(localStorage.getItem(LS_KEYS.SAVED) || "[]");
         }
         function setSavedComparisons(list) {
             localStorage.setItem(LS_KEYS.SAVED, JSON.stringify(list));
         }
-
-        // Normaliza arrays para detectar duplicados (independiente del orden)
         function normalizedKey(ids) {
             return [...new Set(ids)].sort().join("|");
         }
 
-        /* ===========================
-         UI: Comparación actual
-         =========================== */
+        /* ===== UI Comparación ===== */
         function updateComparisonCounter(count) {
             const counter = document.getElementById("comparison-counter");
             if (counter) {
@@ -671,11 +745,9 @@
                 ".comparison-table thead tr",
             );
             const clearButton = document.getElementById("comparison-clear-btn");
-
             const saveBtn = document.getElementById("save-comparison-btn");
 
             tableBody.innerHTML = "";
-
             tableHeadRow.innerHTML = "<th>Características</th>";
 
             if (products.length === 0) {
@@ -683,7 +755,6 @@
                     '<tr><td class="feature-cell" colspan="5" style="text-align:center; padding: 50px;">No has seleccionado productos para comparar. Ve a la <a href="index.html" style="color:var(--color-accent);">página de inicio</a> para empezar.</td></tr>';
                 clearButton.style.display = "none";
                 saveBtn.disabled = true;
-
                 saveBtn.title = "Agrega productos para poder guardar";
                 renderSavedComparisons();
                 return;
@@ -695,23 +766,25 @@
 
             const features = [
                 {key: "name", label: "Nombre del Modelo", type: "product-title"},
+
                 {
                     key: "price",
                     label: '<i class="fas fa-dollar-sign"></i> Precio IT HYT',
                     type: "price-cell",
                 },
+
                 {
                     key: "processor",
                     label:
                         '<i class="fas fa-microchip"></i> Procesador / Espec. Principal',
                     type: "data",
                 },
-
                 {
                     key: "ram",
                     label: '<i class="fas fa-memory"></i> Memoria RAM / Conectividad',
                     type: "data",
                 },
+
                 {
                     key: "storage",
                     label: '<i class="fas fa-hdd"></i> Almacenamiento / Detalles',
@@ -720,10 +793,8 @@
                 {key: "action", label: "Acción", type: "buy-link"},
             ];
 
-            // Encabezados
             for (let i = 0; i < 4; i++) {
                 const th = document.createElement("th");
-
                 if (products[i]) {
                     th.textContent =
                         products[i].name.split(" ").slice(0, 3).join(" ") +
@@ -731,22 +802,21 @@
                 } else {
                     th.textContent = "Producto VACÍO";
                 }
+
                 tableHeadRow.appendChild(th);
             }
 
-            // Filas
             features.forEach((feature) => {
                 const row = document.createElement("tr");
                 const featureCell = document.createElement("td");
+
                 featureCell.classList.add("feature-cell");
                 featureCell.innerHTML = feature.label;
                 row.appendChild(featureCell);
 
                 for (let i = 0; i < 4; i++) {
                     const product = products[i];
-
                     const td = document.createElement("td");
-
                     if (product) {
                         if (feature.key === "action") {
                             td.classList.add("buy-link");
@@ -758,17 +828,15 @@
                     } else {
                         td.textContent = feature.key === "name" ? "VACÍO" : "-";
                     }
-
                     row.appendChild(td);
                 }
+
                 tableBody.appendChild(row);
             });
 
             updateComparisonCounter(products.length);
 
-            // marcar si la comparación actual ya está guardada
             const saved = getSavedComparisons();
-
             const exists = saved.some(
                 (c) => normalizedKey(c.productIds) === normalizedKey(productIds),
             );
@@ -777,25 +845,19 @@
             renderSavedComparisons();
         }
 
-        /* ===========================
-  
-         Guardar/gestionar comparaciones
-         =========================== */
+        /* ===== Guardar/gestionar comparaciones ===== */
         function saveCurrentComparison() {
             const ids = getCurrentComparison().slice(0, 4);
             if (ids.length === 0) return;
 
             const saved = getSavedComparisons();
             const key = normalizedKey(ids);
-
-            // Evitar duplicados exactos (independiente del orden)
             if (saved.some((c) => normalizedKey(c.productIds) === key)) {
-                // ya existe: solo feedback visual
                 document.getElementById("save-comparison-btn").classList.add("saved");
+
                 return;
             }
 
-            // límite opcional (10)
             const MAX = 10;
             const newItem = {
                 id: String(Date.now()),
@@ -818,7 +880,6 @@
         function loadSavedComparison(id) {
             const item = getSavedComparisons().find((c) => c.id === id);
             if (!item) return;
-
             setCurrentComparison(item.productIds);
             loadComparisonTable();
             window.scrollTo({top: 0, behavior: "smooth"});
@@ -827,11 +888,8 @@
         function renderSavedComparisons() {
             const container = document.getElementById("saved-grid");
             const empty = document.getElementById("saved-empty");
-
             const saved = getSavedComparisons();
-
             container.innerHTML = "";
-
             empty.style.display = saved.length ? "none" : "block";
 
             saved.forEach((item) => {
@@ -843,21 +901,84 @@
                 const created = new Date(item.createdAt);
                 div.innerHTML = `
           <div class="meta"><i class="far fa-clock"></i> Guardado el ${created.toLocaleDateString()} ${created.toLocaleTimeString()}</div>
+
           <div class="names">${names.join(" • ")}</div>
           <div class="actions">
             <button class="btn btn-secondary" onclick="loadSavedComparison('${item.id}')"><i class="fas fa-eye"></i> Ver</button>
             <button class="btn btn-danger" onclick="deleteSavedComparison('${item.id}')"><i class="fas fa-trash-alt"></i> Borrar</button>
           </div>`;
+
                 container.appendChild(div);
             });
         }
 
-        /* ===========================
-         Arranque + eventos
-         =========================== */
+        /* ===== Bloqueo de salida del comparador con confirmación ===== */
+        let pendingHref = null;
+        function openExitConfirm(href) {
+            pendingHref = href;
+            document.getElementById("confirm-exit-overlay").classList.add("show");
+            document.getElementById("confirm-exit").classList.add("show");
+        }
+        function closeExitConfirm() {
+            pendingHref = null;
+            document
+                .getElementById("confirm-exit-overlay")
+                .classList.remove("show");
+            document.getElementById("confirm-exit").classList.remove("show");
+        }
+
+        function forceExitAndClear() {
+            // Borrar comparación y navegar
+            localStorage.removeItem(LS_KEYS.CURRENT);
+
+            if (pendingHref) {
+                const go = pendingHref;
+
+                pendingHref = null;
+                window.location.href = go;
+            }
+        }
+        function setupExitInterception() {
+            // Interceptar TODOS los enlaces que saquen de esta página
+            const anchors = document.querySelectorAll("a[href]");
+            const here = location.pathname.split("/").pop() || "comparador.html";
+
+            anchors.forEach((a) => {
+                const href = a.getAttribute("href");
+                // Ignorar anchors vacíos, #, javascript:, y el propio comparador
+                if (!href || href.startsWith("#") || href.startsWith("javascript:"))
+                    return;
+
+                // Resolver destino absoluto para comparar pathname
+                const dest = document.createElement("a");
+                dest.href = href;
+                const destFile = dest.pathname.split("/").pop();
+
+                // Si es el mismo archivo, no interceptar
+                if ((destFile || "comparador.html") === here) return;
+
+                a.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    openExitConfirm(dest.href);
+                });
+            });
+
+            // Botones del modal
+            document
+                .getElementById("btn-keep")
+                .addEventListener("click", closeExitConfirm);
+            document
+                .getElementById("btn-leave")
+                .addEventListener("click", forceExitAndClear);
+            document
+                .getElementById("confirm-exit-overlay")
+                .addEventListener("click", closeExitConfirm);
+        }
+
+        /* ===== Arranque + eventos ===== */
         document.addEventListener("DOMContentLoaded", () => {
-            // menú mobile
             const menuToggle = document.querySelector(".menu-toggle");
+
             const mainMenu = document.getElementById("main-menu");
             if (menuToggle && mainMenu) {
                 menuToggle.addEventListener("click", (e) => {
@@ -866,12 +987,12 @@
                 });
             }
 
-            // botón guardar comparación
             document
                 .getElementById("save-comparison-btn")
                 .addEventListener("click", saveCurrentComparison);
 
-            // popup carrito (igual que en home)
+            // POP-UP carrito (existente)
+
             const popup = document.getElementById("cart-popup");
             const overlay = document.getElementById("cart-popup-overlay");
             const closeBtn = document.getElementById("close-popup-btn");
@@ -881,7 +1002,6 @@
                     popup.classList.add("show");
                 }
             }
-
             function hideCartPopup() {
                 if (popup && overlay) {
                     overlay.classList.remove("show");
@@ -889,18 +1009,19 @@
                 }
             }
             if (closeBtn) closeBtn.addEventListener("click", hideCartPopup);
+
             if (overlay) overlay.addEventListener("click", hideCartPopup);
             let pageVisits = sessionStorage.getItem("pageVisits");
             let currentVisitCount = pageVisits ? parseInt(pageVisits, 10) : 0;
             currentVisitCount++;
             sessionStorage.setItem("pageVisits", currentVisitCount);
-
             if (currentVisitCount === 3) {
                 setTimeout(showCartPopup, 1500);
             }
-        });
 
-        // Cargar tabla al inicio (también está en body onload por redundancia segura)
+            // Interceptar salidas
+            setupExitInterception();
+        });
 
         function onLoadInit() {
             loadComparisonTable();
