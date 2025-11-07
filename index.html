@@ -12,16 +12,13 @@
             --color-primary: #000000;
             /* Negro Oscuro (Fondo Navbar) */
             --color-secondary: #ffffff;
-
             /* Blanco */
             --color-accent: #5e35b1;
             /* Púrpura Vibrante */
-
             --color-light-gray: #f5f5f5;
             /* Gris Claro (Fondo cuerpo, tarjetas) */
             --color-text-dark: #333333;
             /* Texto principal oscuro */
-
             --color-success: #25d366;
             /* Verde para WhatsApp/Éxito */
             --color-danger: #f44336;
@@ -53,7 +50,6 @@
             justify-content: space-between;
             align-items: center;
             background-color: var(--color-primary);
-
             padding: 10px 20px;
             flex-wrap: wrap;
         }
@@ -70,7 +66,6 @@
         .navbar-search {
             flex-grow: 1;
             max-width: 500px;
-
             display: flex;
             margin: 0 20px;
         }
@@ -106,7 +101,6 @@
 
         .navbar-icons a {
             margin-left: 20px;
-
             font-size: 0.9em;
             display: flex;
             align-items: center;
@@ -121,7 +115,6 @@
         .navbar-menu {
             background-color: var(--color-accent);
             display: flex;
-
             justify-content: flex-start;
             padding: 10px 20px;
             font-weight: bold;
@@ -139,17 +132,14 @@
         }
 
         /* Contenido (igual que antes) */
-
         .hero {
             background-color: var(--color-primary);
-
             padding: 50px 20px;
             text-align: center;
             background-image: url("data:image/jpeg;base64,...");
             background-size: cover;
             background-position: center;
             height: 300px;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -166,7 +156,6 @@
             padding: 8px 15px;
             font-size: 1.5em;
             display: inline-block;
-
             margin-bottom: 10px;
         }
 
@@ -184,9 +173,7 @@
         .slider-arrow {
             color: var(--color-secondary);
             font-size: 3em;
-
             cursor: pointer;
-
             padding: 0 20px;
         }
 
@@ -210,7 +197,6 @@
 
         .info-item i {
             font-size: 2.5em;
-
             color: var(--color-accent);
         }
 
@@ -248,7 +234,6 @@
             color: var(--color-accent);
             font-weight: bold;
             text-transform: uppercase;
-
             font-size: 0.9em;
         }
 
@@ -262,7 +247,6 @@
             background-color: var(--color-secondary);
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
             overflow: hidden;
             text-align: center;
             padding: 20px;
@@ -272,7 +256,6 @@
             width: 100%;
             height: 150px;
             object-fit: contain;
-
             background-color: var(--color-light-gray);
             margin-bottom: 15px;
             display: block;
@@ -289,7 +272,6 @@
             font-size: 1.5em;
             font-weight: bold;
             color: var(--color-accent);
-
             margin-bottom: 15px;
         }
 
@@ -339,7 +321,6 @@
             background-color: var(--color-success);
             color: var(--color-secondary);
             border-radius: 50px;
-
             text-align: center;
             font-size: 30px;
             box-shadow: 2px 2px 3px #999;
@@ -350,11 +331,9 @@
         }
 
         /* === TOAST "agregado a comparador" === */
-
         .compare-toast {
             position: fixed;
             right: 20px;
-
             bottom: 20px;
             background: rgba(0, 0, 0, 0.9);
             color: #fff;
@@ -362,7 +341,6 @@
             border-radius: 8px;
             font-size: 0.95em;
             display: inline-flex;
-
             align-items: center;
             gap: 10px;
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
@@ -399,10 +377,8 @@
             display: none;
             position: fixed;
             top: 50%;
-
             left: 50%;
             transform: translate(-50%, -50%);
-
             background: #fff;
             width: 92%;
             max-width: 460px;
@@ -414,7 +390,6 @@
 
         .choose-header {
             font-weight: bold;
-
             font-size: 1.05em;
             margin-bottom: 10px;
             color: #111;
@@ -430,7 +405,6 @@
         .choose-item {
             display: flex;
             justify-content: space-between;
-
             align-items: center;
             padding: 10px 12px;
             border-bottom: 1px solid #f2f2f2;
@@ -448,13 +422,11 @@
 
         .choose-item .meta small {
             display: block;
-
             color: #777;
         }
 
         .choose-actions {
             display: flex;
-
             justify-content: flex-end;
             gap: 10px;
             margin-top: 12px;
@@ -470,143 +442,269 @@
 
         .btn-primary {
             background: var(--color-accent);
-
             color: #fff;
         }
 
         .btn-secondary {
-            background: #e0e0e0;
-            color: #222;
+            background: #e0e0e;
         }
 
-        .btn-danger {
-            background: var(--color-danger);
-            color: #fff;
+        /* --- SECCIÓN DE RESEÑAS (Carrusel) --- */
+        #reviews-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
         }
 
-        .choose-overlay.show,
-        .choose-modal.show {
+        .reviews-header h2 {
+            font-size: 2em;
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .reviews-carousel-container {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .reviews-track {
+            display: flex;
+            overflow-x: scroll;
+            /* Permite el scroll horizontal */
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            gap: 20px;
+            padding: 10px;
+            /* Ocultar barra de scroll en navegadores */
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+        }
+
+        .reviews-track::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari and Opera */
+        }
+
+        .reviews-track .review-card {
+            min-width: 400px;
+	    min-height: 250px;
+            /* AUMENTADO a petición del usuario */
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            /* Permite que las tarjetas se 'encajen' */
+            background-color: var(--color-secondary);
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .review-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .user-name {
+            font-weight: bold;
+            color: var(--color-accent);
+            font-size: 1.1em;
+        }
+
+        .rating {
+            color: #ffc107;
+            /* Color de estrellas */
+        }
+
+        .rating .fas.fa-star,
+        .rating .fas.fa-star-half-alt {
+            margin-right: 2px;
+        }
+
+        .review-text {
+            font-style: italic;
+            line-height: 1.5;
+            color: var(--color-text-dark);
+            margin-bottom: 10px;
+        }
+
+        .review-date {
             display: block;
+            text-align: right;
+            font-size: 0.8em;
+            color: #777;
         }
 
-        /* Responsive (igual que antes) */
-        @media (max-width: 992px) {
-            .navbar-main {
-                flex-wrap: wrap;
-                justify-content: space-between;
-            }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-primary);
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
 
-            .navbar-main .logo {
-                flex-basis: auto;
-                text-align: left;
-                margin-bottom: 0;
+        .carousel-arrow:hover {
+            opacity: 1;
+        }
+
+        .carousel-arrow.fa-chevron-left {
+            left: 0px;
+        }
+
+        .carousel-arrow.fa-chevron-right {
+            right: 0px;
+        }
+
+        /* --- SUB-FOOTER DE ESTADÍSTICAS (Modificado) --- */
+        .sub-footer-stats {
+            background-color: var(--color-primary);
+            /* CAMBIO: Fondo a blanco/gris claro para legibilidad */
+            color: var(--color-secondary);
+            /* CAMBIO: Texto a negro (color-primary) por petición */
+            padding: 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            /* Para poner el título arriba */
+            align-items: center;
+            gap: 30px;
+        }
+
+        .sub-footer-stats h2 {
+            /* Nuevo título "Más de" */
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            color: var(--color-secondary);
+            text-transform: uppercase;
+        }
+
+        .stats-content-wrapper {
+            /* Nuevo contenedor para los ítems */
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .stats-item {
+            flex-basis: 200px;
+            text-align: center;
+        }
+
+        .stats-item i {
+            font-size: 3em;
+            color: var(--color-secondary);
+            /* Mantener íconos en púrpura */
+            margin-bottom: 10px;
+        }
+
+        .stats-item h3 {
+            font-size: 2.5em;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .stats-item p {
+            font-size: 1.1em;
+            margin-top: 5px;
+            color: #555;
+        }
+
+
+        /* Responsividad (ajuste para móviles) */
+        @media (max-width: 768px) {
+            .navbar-main {
+                flex-direction: column;
             }
 
             .navbar-search {
                 order: 3;
-                flex-basis: 100%;
-                max-width: 100%;
                 margin: 10px 0;
+                width: 100%;
+                max-width: none;
             }
 
             .navbar-icons {
                 order: 2;
-                flex-basis: auto;
-                justify-content: flex-end;
-                margin-top: 0;
-                flex-grow: 1;
+                width: 100%;
+                justify-content: center;
+                margin-top: 10px;
             }
 
             .navbar-icons a {
-                margin-left: 15px;
-                font-size: 0.9em;
+                margin: 0 10px;
             }
 
             .navbar-menu {
-                flex-wrap: wrap;
-                justify-content: flex-start;
-                padding: 10px 20px;
-            }
-
-            .navbar-menu a {
-                padding: 5px 10px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .top-banner {
-                font-size: 0.7em;
-            }
-
-            .navbar-main {
-                flex-direction: column;
-                align-items: center;
-                padding: 15px 10px;
-            }
-
-            .navbar-main .logo {
-                flex-basis: 100%;
-                text-align: center;
-                margin-bottom: 15px;
-                order: 1;
-            }
-
-            .navbar-icons {
-                order: 2;
-                flex-direction: column;
-                flex-basis: 100%;
-                align-items: center;
-                margin-top: 5px;
-            }
-
-            .navbar-icons a {
-                margin: 5px 0;
-                font-size: 0.9em;
-                width: 100%;
-                text-align: center;
                 justify-content: center;
             }
 
-            .navbar-icons a i {
-                margin-right: 8px;
-            }
-
-            .navbar-search {
-                order: 3;
-                flex-basis: 100%;
-                margin: 15px 0 0 0;
-            }
-
-            .navbar-menu {
-                flex-direction: column;
-
-                text-align: center;
-                padding: 10px 10px;
-            }
-
-            .navbar-menu a {
-                display: block;
-                padding: 8px 0;
-
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            }
-
-            .navbar-menu a:last-child {
-                border-bottom: none;
-            }
-
-            .navbar-menu .right-link {
+            .hero-content {
                 margin-left: 0;
+                text-align: center;
+            }
+
+            .hero-content h2 {
+                font-size: 2em;
+            }
+
+            .hero-content .tag {
+                font-size: 1.2em;
+            }
+
+            .info-bar {
+                flex-direction: column;
             }
 
             .whatsapp-float {
                 width: 50px;
                 height: 50px;
                 bottom: 20px;
-
                 right: 20px;
-
                 font-size: 24px;
+            }
+
+            /* Responsive para Carrusel y Sub-footer */
+            .carousel-arrow {
+                font-size: 1.5em;
+            }
+
+            .carousel-arrow.fa-chevron-left {
+                left: 5px;
+            }
+
+            .carousel-arrow.fa-chevron-right {
+                right: 5px;
+            }
+
+            .sub-footer-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .stats-content-wrapper {
+                flex-direction: column;
             }
         }
 
@@ -619,15 +717,12 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.6);
-
             z-index: 2000;
         }
 
         .popup {
             display: none;
-
             position: fixed;
-
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -657,7 +752,6 @@
             position: absolute;
             top: 10px;
             right: 15px;
-
             background: none;
             border: none;
             font-size: 2em;
@@ -692,10 +786,8 @@
         <div class="top-banner">
             Compras a partir de $600.000 envío GRATIS a CABA y GBA
         </div>
-
         <div class="navbar-main">
             <a href="index.html" class="logo">IT HYT</a>
-
             <div class="navbar-search">
                 <input type="text" placeholder="¿Qué estás buscando?" />
                 <button class="navbar-search-btn">
@@ -706,75 +798,66 @@
                 <a href="#"><i class="fas fa-sign-in-alt"></i>INGRESAR</a>
 
                 <a href="#"><i class="fas fa-heart"></i>FAVORITOS</a>
-                <a href="#"><i class="fas fa-shopping-cart"></i>CARRITO</a>
+                <a href="comparador.html" class="comp-link">
+                    <i class="fas fa-balance-scale"></i> COMPARAR<span id="comparison-counter"></span>
+                </a>
+                <a href="#" onclick="showCartPopup()">
+                    <i class="fas fa-shopping-cart"></i> Carrito
+                </a>
             </div>
         </div>
-
         <nav class="navbar-menu">
-            <a href="#">CATEGORÍAS <i class="fas fa-caret-down"></i></a>
-            <a href="#">OPORTUNIDADES</a>
-            <a href="faq.html">PREGUNTAS FRECUENTES</a>
-            <a href="comparador.html" class="comp-link"><i class="fas fa-balance-scale"></i> COMPARAR<span
-                    id="comparison-counter"></span></a>
-            <a href="#" class="right-link">VENDE NUESTRAS MARCAS</a>
+            <a href="#">Ofertas</a>
+            <a href="#">Novedades</a>
+            <a href="#">Contacto</a>
+            <a href="#" class="right-link">¡Garantía 1 año en todos nuestros productos!</a>
         </nav>
     </header>
 
     <main>
-        <section class="hero">
+        <div class="hero">
             <i class="fas fa-chevron-left slider-arrow"></i>
-
             <div class="hero-content">
                 <span class="tag">¡NUEVO!</span>
-                <h2>Laptop Gamer Pro 2025</h2>
-                <p>Potencia inigualable para la máxima experiencia de juego.</p>
+                <h2>Logitech MX Master 3S</h2>
+                <p>El mouse definitivo para tu productividad. Conexión dual y 8000 DPI.</p>
             </div>
-
             <i class="fas fa-chevron-right slider-arrow"></i>
-        </section>
+        </div>
 
         <section class="info-bar">
             <div class="info-item">
-                <i class="fas fa-credit-card"></i>
+                <i class="fas fa-shipping-fast"></i>
                 <div class="info-text">
-                    <h4>Pagá como quieras</h4>
-
-                    <p>
-                        Visa, Mastercard, Amex, Naraja X, Cuenta DNI y Mercado Pago.
-                        ¡Hasta 12 cuotas sin interés!
-                    </p>
+                    <h4>Envío Rápido</h4>
+                    <p>Envíos a todo el país</p>
                 </div>
             </div>
-            <div class="info-item">
-                <i class="fas fa-truck-fast"></i>
-                <div class="info-text">
-                    <h4>Recibilo donde estés</h4>
-
-                    <p>Envíos a todo el país. Retiro GRATIS en nuestras sucursales.</p>
-                </div>
-            </div>
-
             <div class="info-item">
                 <i class="fas fa-shield-alt"></i>
                 <div class="info-text">
-                    <h4>Comprá con seguridad</h4>
-                    <p>
-                        12 meses de garantía oficial y soporte técnico especializado 24/7.
-                    </p>
+                    <h4>Garantía Oficial</h4>
+                    <p>12 meses en todos los productos</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-credit-card"></i>
+                <div class="info-text">
+                    <h4>Financiación</h4>
+                    <p>3, 6 y 12 cuotas sin interés</p>
                 </div>
             </div>
         </section>
 
         <section class="offers-section">
             <div class="offers-header">
-                <h2>🔥 Ofertas de la Semana</h2>
-                <a href="#">VER TODAS <i class="fas fa-arrow-right"></i></a>
+                <h2>Ofertas Destacadas</h2>
+                <a href="#">Ver todas las ofertas <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <div class="product-grid">
                 <div class="product-card" data-product-id="prod-001">
                     <img src="imagenes/monitor.jpg" alt="Monitor UltraWide 34 144Hz" />
-
                     <h3>Monitor UltraWide 34" 144Hz</h3>
                     <p class="price">$589.999</p>
                     <a href="#" class="buy-btn">COMPRAR</a>
@@ -782,33 +865,26 @@
                         Añadir a Comparar
                     </button>
                 </div>
-
                 <div class="product-card" data-product-id="prod-002">
                     <img src="imagenes/teclado.jpg" alt="Teclado Mecánico RGB Pro" />
                     <h3>Teclado Mecánico RGB Pro</h3>
                     <p class="price">$45.500</p>
                     <a href="#" class="buy-btn">COMPRAR</a>
-
                     <button class="compare-btn" onclick="toggleComparison(this)">
                         Añadir a Comparar
                     </button>
                 </div>
-
                 <div class="product-card" data-product-id="prod-003">
                     <img src="imagenes/camara.jpg" alt="Webcam 4K con Autoenfoque" />
-
                     <h3>Webcam 4K con Autoenfoque</h3>
                     <p class="price">$85.000</p>
                     <a href="#" class="buy-btn">COMPRAR</a>
-
                     <button class="compare-btn" onclick="toggleComparison(this)">
                         Añadir a Comparar
                     </button>
                 </div>
-
                 <div class="product-card" data-product-id="prod-004">
                     <img src="imagenes/ergonomico.jpg" alt="Mouse Ergonómico Inalámbrico" />
-
                     <h3>Mouse Ergonómico Inalámbrico</h3>
                     <p class="price">$19.999</p>
                     <a href="#" class="buy-btn">COMPRAR</a>
@@ -816,33 +892,28 @@
                         Añadir a Comparar
                     </button>
                 </div>
-
                 <div class="product-card" data-product-id="prod-005">
                     <img src="imagenes/mousepad.png" alt="Mousepad Gamer XL" />
-
                     <h3>Mousepad Gamer XL</h3>
                     <p class="price">$12.500</p>
-
                     <a href="#" class="buy-btn">COMPRAR</a>
                     <button class="compare-btn" onclick="toggleComparison(this)">
                         Añadir a Comparar
                     </button>
                 </div>
-
                 <div class="product-card" data-product-id="prod-006">
                     <img src="imagenes/auriculares.jpg" alt="Auriculares Inalámbricos" />
-                    <h3>auriculares Inalámbrico</h3>
+                    <h3>Auriculares Inalámbrico</h3>
                     <p class="price">$95.999</p>
                     <a href="#" class="buy-btn">COMPRAR</a>
                     <button class="compare-btn" onclick="toggleComparison(this)">
                         Añadir a Comparar
                     </button>
                 </div>
-
                 <div class="product-card" data-product-id="prod-007">
-                    <img src="imagenes/Logitech.jpg" alt="Mouse Logitech" />
-                    <h3>Mouse logitech</h3>
-                    <p class="price">$49.999</p>
+                    <img src="imagenes/mouse-mx.jpg" alt="Mouse Logitech MX Master 3S" />
+                    <h3>Mouse Logitech MX Master 3S</h3>
+                    <p class="price">$125.000</p>
                     <a href="#" class="buy-btn">COMPRAR</a>
                     <button class="compare-btn" onclick="toggleComparison(this)">
                         Añadir a Comparar
@@ -850,80 +921,188 @@
                 </div>
             </div>
         </section>
-    </main>
+        <section id="reviews-section" class="content-section">
+            <div class="reviews-header">
+                <h2>Opiniones de Nuestros Clientes</h2>
+            </div>
 
-    <a href="https://wa.me/" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <div class="reviews-carousel-container">
+                <i class="fas fa-chevron-left carousel-arrow"></i>
+                <div class="reviews-track">
+                    <div class="review-card">
+                        <div class="review-meta">
+                            <span class="user-name">Sofía L.</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                        <p class="review-text">"Excelente servicio y el producto (Monitor UltraWide) llegó en perfectas condiciones y muy rápido. ¡Recomendado!"</p>
+                        <small class="review-date">Octubre 20, 2025</small>
+                    </div>
 
-    <!-- Toast al agregar al comparador -->
-    <a href="comparador.html" id="compare-toast" class="compare-toast">
-        <i class="fas fa-check-circle"></i>
-        <span id="compare-toast-text">¡Producto agregado al comparador! Click para ver</span>
+                    <div class="review-card">
+                        <div class="review-meta">
+                            <span class="user-name">Javier P.</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="review-text">"El teclado mecánico es una maravilla. La calidad es superior a lo que esperaba por el precio. ¡Volveré a comprar!"</p>
+                        <small class="review-date">Octubre 18, 2025</small>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-meta">
+                            <span class="user-name">Ana M.</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="review-text">"Buena atención al cliente, aunque el envío tardó un día más de lo prometido. El mousepad XL es genial."</p>
+                        <small class="review-date">Octubre 15, 2025</small>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-meta">
+                            <span class="user-name">Carlos G.</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="review-text">"La atención al cliente es inmejorable, me ayudaron a elegir el producto perfecto. Muy contento con mi compra!"</p>
+                        <small class="review-date">Octubre 10, 2025</small>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-meta">
+                            <span class="user-name">Andrea R.</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="review-text">"Cinco estrellas, el proceso de compra fue muy sencillo y el producto llegó antes de lo esperado."</p>
+                        <small class="review-date">Octubre 05, 2025</small>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right carousel-arrow"></i>
+            </div>
+        </section>
+        <section class="sub-footer-stats">
+            <h2>Más de</h2>
+            <div class="stats-content-wrapper">
+                <div class="stats-item">
+                    <i class="fas fa-box-open"></i>
+                    <h3>+15.000</h3>
+                    <p>Productos vendidos en 2025</p>
+                </div>
+                <div class="stats-item">
+                    <i class="fas fa-users"></i>
+                    <h3>+8.500</h3>
+                    <p>Clientes satisfechos</p>
+                </div>
+                <div class="stats-item">
+                    <i class="fas fa-building"></i>
+                    <h3>+45</h3>
+                    <p>Empresas que confían en nosotros</p>
+                </div>
+            </div>
+        </section>
+        </main>
+
+    <a href="https://wa.me/XXXXXXXXXX" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Modal: elegir grupo de comparación -->
-    <div id="choose-overlay" class="choose-overlay"></div>
-    <div id="choose-modal" class="choose-modal" role="dialog" aria-modal="true" aria-labelledby="choose-title">
-        <div class="choose-header" id="choose-title">
-            ¿A qué comparación querés agregar este producto?
-        </div>
-
-        <div id="choose-list" class="choose-list">
-            <!-- Se llena dinámicamente -->
-        </div>
-
-        <div class="choose-actions">
-            <button class="btn btn-secondary" id="choose-cancel">Cerrar</button>
-        </div>
+    <div id="compare-toast" class="compare-toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="compare-toast-text">Producto agregado a la lista de comparación</span>
     </div>
 
-    <!-- Pop-up carrito (existente) -->
+    <div id="choose-overlay" class="choose-overlay"></div>
+    <div id="choose-modal" class="choose-modal">
+        <div class="choose-header">
+            Añadir a
+        </div>
+        <div id="choose-list" class="choose-list">
+            </div>
+        <div class="choose-actions">
+            <button id="choose-cancel" class="btn btn-secondary">Cancelar</button>
+            <button id="choose-new-group" class="btn btn-primary">Crear nuevo grupo</button>
+        </div>
+    </div>
 
     <div id="cart-popup-overlay" class="popup-overlay"></div>
-
     <div id="cart-popup" class="popup">
-        <button id="close-popup-btn" class="close-btn">&times;</button>
-        <h3>¡Recordatorio!</h3>
-        <p>
-            Tenés cosas pendientes en el carrito esperándote, ¡no las abandones!
-        </p>
-        <a href="#" class="popup-btn">Ir al Carrito</a>
+        <button class="close-btn" id="close-popup-btn">&times;</button>
+        <h3>¡Tu Carrito te espera!</h3>
+        <p>Aprovecha ahora el envío gratis en compras superiores a $600.000 y comienza a disfrutar de tu nueva tecnología.</p>
+        <a href="#" class="popup-btn">VER MI CARRITO</a>
     </div>
-
     <script>
-        /* === Utilidades LocalStorage (compatibles con comparador.html) === */
-        const LS_KEYS = {
-            CURRENT: "comparisonProducts",
-            SAVED: "savedComparisons",
-        };
-        const MAX_PER_COMPARISON = 4;
+        const MAX_PER_COMPARISON = 4; // Máximo de productos a comparar
+
+        // --- Lógica de localStorage para comparación ---
+        function getSavedComparisons() {
+            const saved = localStorage.getItem("savedComparisons");
+            return saved ? JSON.parse(saved) : [];
+        }
+
+        function setSavedComparisons(comparisons) {
+            localStorage.setItem("savedComparisons", JSON.stringify(comparisons));
+        }
 
         function getCurrentComparison() {
-            return JSON.parse(localStorage.getItem(LS_KEYS.CURRENT) || "[]");
+            const current = localStorage.getItem("currentComparison");
+            return current ? JSON.parse(current) : [];
         }
 
-        function setCurrentComparison(ids) {
-            localStorage.setItem(LS_KEYS.CURRENT, JSON.stringify(ids));
-        }
-        function getSavedComparisons() {
-            return JSON.parse(localStorage.getItem(LS_KEYS.SAVED) || "[]");
+        function setCurrentComparison(products) {
+            localStorage.setItem("currentComparison", JSON.stringify(products));
+            updateComparisonCounter(products.length);
+
+            // Actualizar botones en la página
+            document.querySelectorAll(".compare-btn").forEach((btn) => {
+                const productId = btn.closest(".product-card").getAttribute("data-product-id");
+                if (products.includes(productId)) {
+                    btn.classList.add("selected-for-comp");
+                    btn.textContent = "Quitar de Comparar";
+                } else {
+                    btn.classList.remove("selected-for-comp");
+                    btn.textContent = "Añadir a Comparar";
+                }
+            });
         }
 
-        function setSavedComparisons(list) {
-            localStorage.setItem(LS_KEYS.SAVED, JSON.stringify(list));
-        }
-
-        /* Mapea ID -> Nombre. 1) intenta leer del DOM; 2) fallback a un mini DB local */
         function getProductName(productId) {
-            const domName = document.querySelector(
-                `.product-card[data-product-id="${productId}"] h3`,
-            );
+            const domName = document
+                .querySelector(`.product-card[data-product-id="${productId}"] h3`);
             if (domName) return domName.textContent.trim();
+
             const nameDB = {
                 "prod-001": 'Monitor UltraWide 34" 144Hz',
                 "prod-002": "Teclado Mecánico RGB Pro",
                 "prod-003": "Webcam 4K con Autoenfoque",
                 "prod-004": "Mouse Ergonómico Inalámbrico",
-
                 "prod-005": "Mousepad Gamer XL",
                 "prod-006": "Auriculares Inalámbricos Gaming",
                 "prod-007": "Mouse Logitech MX Master 3S",
@@ -939,15 +1118,17 @@
 
         /* === Toast simple (4s) === */
         let compareToastTimer = null;
+
         function showCompareToast(message) {
             const toast = document.getElementById("compare-toast");
             const text = document.getElementById("compare-toast-text");
-
             if (!toast) return;
-            if (message) text.textContent = message;
-            toast.classList.add("show");
-            if (compareToastTimer) clearTimeout(compareToastTimer);
 
+            if (message) text.textContent = message;
+
+            toast.classList.add("show");
+
+            if (compareToastTimer) clearTimeout(compareToastTimer);
             compareToastTimer = setTimeout(
                 () => toast.classList.remove("show"),
                 4000,
@@ -962,11 +1143,11 @@
             document.getElementById("choose-modal").classList.remove("show");
             pendingProductId = null;
         }
+
         function openChooseModal(productId) {
             pendingProductId = productId;
 
             const overlay = document.getElementById("choose-overlay");
-
             const modal = document.getElementById("choose-modal");
             const list = document.getElementById("choose-list");
             list.innerHTML = "";
@@ -974,96 +1155,99 @@
             // Opción 1: Comparación actual
             const currentItem = document.createElement("div");
             currentItem.className = "choose-item";
+
             const curMeta = document.createElement("div");
             curMeta.className = "meta";
             curMeta.innerHTML = `<strong>Comparación actual</strong><small>Visible en COMPARAR</small>`;
+
             const curBtn = document.createElement("button");
             curBtn.className = "btn btn-primary";
-            curBtn.textContent = "Agregar aquí";
-
+            curBtn.textContent = "Agregar";
             curBtn.onclick = () => {
-                addToCurrentComparison(productId);
+                addToCurrentComparison(pendingProductId);
                 closeChooseModal();
             };
+
             currentItem.appendChild(curMeta);
             currentItem.appendChild(curBtn);
             list.appendChild(currentItem);
 
-            // Opción 2: listas guardadas (si hay) — ahora mostrando NOMBRES
+            // Separador
+            const separator = document.createElement("div");
+            separator.style.cssText =
+                "height: 1px; background: #ddd; margin: 10px 0;";
+            list.appendChild(separator);
 
-            const saved = getSavedComparisons();
-            saved.forEach((item) => {
-                const div = document.createElement("div");
-                div.className = "choose-item";
-                const names =
-                    (item.productIds || [])
-                        .map((id) => getProductName(id))
-                        .slice(0, 4)
-                        .join(" • ") || "(Vacío)";
+            // Opciones de grupos guardados
+            const savedComparisons = getSavedComparisons();
+            savedComparisons.forEach((group) => {
+                const item = document.createElement("div");
+                item.className = "choose-item";
+
                 const meta = document.createElement("div");
                 meta.className = "meta";
-                meta.innerHTML = `<strong>Grupo guardado</strong><small>${names}</small>`;
-                const addBtn = document.createElement("button");
-                addBtn.className = "btn btn-primary";
-                addBtn.textContent = "Agregar aquí";
-                addBtn.onclick = () => {
-                    addToSavedComparison(item.id, productId);
+                meta.innerHTML = `<strong>${group.name}</strong><small>${
+                    group.productIds.length
+                } de ${MAX_PER_COMPARISON} productos</small>`;
 
+                const btn = document.createElement("button");
+                btn.className = "btn btn-secondary";
+                btn.textContent = "Agregar";
+                btn.disabled = group.productIds.length >= MAX_PER_COMPARISON;
+                btn.onclick = () => {
+                    addToSavedComparison(group.id, pendingProductId);
                     closeChooseModal();
                 };
-                div.appendChild(meta);
 
-                div.appendChild(addBtn);
-                list.appendChild(div);
+                item.appendChild(meta);
+                item.appendChild(btn);
+                list.appendChild(item);
             });
 
             overlay.classList.add("show");
             modal.classList.add("show");
         }
 
+        // --- Lógica para añadir a grupos ---
         function addToCurrentComparison(productId) {
-            let comparison = getCurrentComparison();
-            if (!comparison.includes(productId)) {
-                if (comparison.length >= MAX_PER_COMPARISON) {
-                    showCompareToast("La comparación actual ya tiene 4 productos.");
-                    return;
-                }
+            let comparisonProducts = getCurrentComparison();
 
-                comparison.push(productId);
-                setCurrentComparison(comparison);
-                updateComparisonCounter(comparison.length);
-                // Marcar botón visualmente SOLO si se agregó al grupo actual
-
-                const btn = document.querySelector(
-                    `.product-card[data-product-id="${productId}"] .compare-btn`,
-                );
-                if (btn) {
-                    btn.classList.add("selected-for-comp");
-                    btn.innerHTML = '<i class="fas fa-check"></i> Comparando';
-                }
-                showCompareToast("¡Agregado a la comparación actual! Click para ver");
-            } else {
-                showCompareToast("Este producto ya estaba en la comparación actual.");
+            if (comparisonProducts.includes(productId)) {
+                // Esto no debería suceder si se llega desde el modal, pero como seguridad
+                showCompareToast("Este producto ya está en la comparación actual.");
+                return;
             }
+
+            if (comparisonProducts.length >= MAX_PER_COMPARISON) {
+                showCompareToast("La comparación actual ya tiene 4 productos.");
+                return;
+            }
+
+            setCurrentComparison([...comparisonProducts, productId]);
+            showCompareToast("¡Producto agregado a la comparación actual!");
         }
 
         function addToSavedComparison(groupId, productId) {
             const saved = getSavedComparisons();
             const idx = saved.findIndex((c) => c.id === groupId);
+
             if (idx === -1) {
                 showCompareToast("No se encontró el grupo.");
                 return;
             }
 
             const ids = saved[idx].productIds || [];
+
             if (ids.includes(productId)) {
                 showCompareToast("Ese grupo ya contiene este producto.");
                 return;
             }
+
             if (ids.length >= MAX_PER_COMPARISON) {
                 showCompareToast("Ese grupo ya tiene 4 productos.");
                 return;
             }
+
             saved[idx].productIds = [...ids, productId];
             setSavedComparisons(saved);
             showCompareToast(
@@ -1072,55 +1256,52 @@
         }
 
         // === Lógica de botón comparar (con elección de grupo si hay guardados) ===
-
         function toggleComparison(button) {
             const productId = button
                 .closest(".product-card")
                 .getAttribute("data-product-id");
             let comparisonProducts = getCurrentComparison();
-
             const index = comparisonProducts.indexOf(productId);
 
-            if (index === -1) {
-                const saved = getSavedComparisons();
-                if (saved.length > 0) {
-                    // Si hay grupos guardados, ofrecer elección
+            if (index > -1) {
+                // Ya está en la lista: Quitar
+                comparisonProducts.splice(index, 1);
+                setCurrentComparison(comparisonProducts);
+                showCompareToast("Producto quitado de la comparación.");
+            } else {
+                // No está en la lista: Añadir
+                const savedComparisons = getSavedComparisons();
+
+                if (
+                    comparisonProducts.length < MAX_PER_COMPARISON &&
+                    savedComparisons.length === 0
+                ) {
+                    // Si la lista actual no está llena y no hay grupos guardados, añadir directamente a la actual
+                    setCurrentComparison([...comparisonProducts, productId]);
+                    showCompareToast("Producto agregado a la comparación actual.");
+                } else if (
+                    comparisonProducts.length >= MAX_PER_COMPARISON ||
+                    savedComparisons.length > 0
+                ) {
+                    // Si la lista actual está llena O si hay grupos guardados, mostrar el modal de elección.
                     openChooseModal(productId);
                 } else {
-                    // Si no hay guardados, se agrega a la comparación actual como antes
-                    addToCurrentComparison(productId);
+                    // Caso para agregar directamente (redundante, pero cubre por si acaso)
+                    setCurrentComparison([...comparisonProducts, productId]);
+                    showCompareToast("Producto agregado a la comparación actual.");
                 }
-            } else {
-                // Remover del grupo actual (comportamiento intacto)
-                comparisonProducts.splice(index, 1);
-
-                setCurrentComparison(comparisonProducts);
-                button.classList.remove("selected-for-comp");
-                button.textContent = "Añadir a Comparar";
-                updateComparisonCounter(comparisonProducts.length);
             }
         }
 
-        // Inicializar UI al cargar
+        // --- Inicialización ---
         document.addEventListener("DOMContentLoaded", () => {
-            const comparisonProducts = getCurrentComparison();
+            // Inicializar contador
+            updateComparisonCounter(getCurrentComparison().length);
 
-            updateComparisonCounter(comparisonProducts.length);
+            // Inicializar estados de botones
+            setCurrentComparison(getCurrentComparison());
 
-            document.querySelectorAll(".product-card").forEach((card) => {
-                const productId = card.getAttribute("data-product-id");
-                const button = card.querySelector(".compare-btn");
-                if (comparisonProducts.includes(productId)) {
-                    button.classList.add("selected-for-comp");
-
-                    button.innerHTML = '<i class="fas fa-check"></i> Comparando';
-                } else {
-                    button.classList.remove("selected-for-comp");
-                    button.innerHTML = "Añadir a Comparar";
-                }
-            });
-
-            // Modal listeners
+            // Listeners para el modal de elección
             document
                 .getElementById("choose-cancel")
                 .addEventListener("click", closeChooseModal);
@@ -1129,17 +1310,42 @@
                 .getElementById("choose-overlay")
                 .addEventListener("click", closeChooseModal);
 
+            // Listener para crear nuevo grupo
+            document
+                .getElementById("choose-new-group")
+                .addEventListener("click", () => {
+                    const groupName = prompt(
+                        "Ingrese un nombre para el nuevo grupo:",
+                        `Mi Grupo ${getSavedComparisons().length + 1}`,
+                    );
+                    if (groupName && groupName.trim()) {
+                        const saved = getSavedComparisons();
+                        const newId =
+                            "group-" + Math.random().toString(36).substr(2, 9);
+                        saved.push({
+                            id: newId,
+                            name: groupName.trim(),
+                            productIds: [],
+                        });
+                        setSavedComparisons(saved);
+                        // Reabrir modal para mostrar el nuevo grupo
+                        openChooseModal(pendingProductId);
+                    }
+                });
+
             // --- POP-UP carrito (existente) ---
             const popup = document.getElementById("cart-popup");
 
             const overlay = document.getElementById("cart-popup-overlay");
             const closeBtn = document.getElementById("close-popup-btn");
+
             function showCartPopup() {
                 if (popup && overlay) {
                     overlay.classList.add("show");
                     popup.classList.add("show");
                 }
             }
+
             function hideCartPopup() {
                 if (popup && overlay) {
                     overlay.classList.remove("show");
@@ -1157,6 +1363,29 @@
                 setTimeout(showCartPopup, 1500);
             }
             // --- fin POP-UP ---
+
+            // --- CAROUSEL DE RESEÑAS ---
+            const track = document.querySelector(".reviews-track");
+            const leftArrow = document.querySelector(".carousel-arrow.fa-chevron-left");
+            const rightArrow = document.querySelector(".carousel-arrow.fa-chevron-right");
+            const cardWidth = 420; // Ancho de la tarjeta (400px) + margen (20px)
+
+            if (track && leftArrow && rightArrow) {
+                leftArrow.addEventListener('click', () => {
+                    track.scrollBy({
+                        left: -cardWidth,
+                        behavior: 'smooth'
+                    });
+                });
+
+                rightArrow.addEventListener('click', () => {
+                    track.scrollBy({
+                        left: cardWidth,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            // --- FIN CAROUSEL DE RESEÑAS ---
         });
     </script>
 </body>
