@@ -684,6 +684,247 @@
         .popup.show {
             display: block;
         }
+	/* --- NUEVO: Sección Reseñas --- */
+        .reviews-section {
+            padding: 50px 20px;
+            background-color: var(--color-secondary);
+            text-align: center;
+        }
+        .reviews-section h2 {
+            font-size: 2em;
+            color: var(--color-primary);
+            margin-bottom: 30px;
+        }
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .review-card {
+            background-color: var(--color-light-gray);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+        .review-card .stars {
+            color: var(--color-accent);
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .review-card p {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .review-card .author {
+            font-weight: bold;
+            color: var(--color-text-dark);
+            text-align: right;
+        }
+
+        /* --- NUEVO: Sección Estadísticas --- */
+        .stats-section {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .stats-section h2 {
+            font-size: 2em;
+            margin-bottom: 40px;
+            color: var(--color-secondary);
+        }
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .stat-item {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+        }
+        .stat-item i {
+            font-size: 3em;
+            color: var(--color-accent);
+            margin-bottom: 15px;
+        }
+        .stat-item h3 {
+            font-size: 2.8em;
+            font-weight: bold;
+            margin: 0;
+            color: var(--color-secondary);
+        }
+        .stat-item p {
+            font-size: 1.1em;
+            text-transform: uppercase;
+            color: #ddd;
+            margin-top: 5px;
+        }
+        /* --- FIN NUEVAS SECCIONES --- */
+
+
+        /* WhatsApp Flotante */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: var(--color-success);
+            color: var(--color-secondary);
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .navbar-main {
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .navbar-main .logo {
+                flex-basis: auto;
+                text-align: left;
+                margin-bottom: 0;
+            }
+
+            .navbar-search {
+                order: 3;
+                flex-basis: 100%;
+                max-width: 100%;
+                margin: 10px 0;
+            }
+
+            .navbar-icons {
+                order: 2;
+                flex-basis: auto;
+                justify-content: flex-end;
+                margin-top: 0;
+                flex-grow: 1;
+            }
+
+            .navbar-icons a {
+                margin-left: 15px;
+                font-size: 0.9em;
+            }
+
+            .navbar-menu {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                padding: 10px 20px;
+            }
+
+            .navbar-menu a {
+                padding: 5px 10px;
+            }
+
+            .hero-content h2 {
+                font-size: 2.5em;
+            }
+
+            .info-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .top-banner {
+                font-size: 0.7em;
+            }
+
+            .navbar-main {
+                flex-direction: column;
+                align-items: center;
+                padding: 15px 10px;
+            }
+
+            .navbar-main .logo {
+                flex-basis: 100%;
+                text-align: center;
+                margin-bottom: 15px;
+                order: 1;
+            }
+
+            .navbar-icons {
+                order: 2;
+                flex-direction: column;
+                flex-basis: 100%;
+                align-items: center;
+                margin-top: 5px;
+            }
+
+            .navbar-icons a {
+                margin: 5px 0;
+                font-size: 0.9em;
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .navbar-icons a i {
+                margin-right: 8px;
+            }
+
+            .navbar-search {
+                order: 3;
+                flex-basis: 100%;
+                margin: 15px 0 0 0;
+            }
+
+            .navbar-menu {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px 10px;
+            }
+
+            .navbar-menu a {
+                display: block;
+                padding: 8px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .navbar-menu a:last-child {
+                border-bottom: none;
+            }
+
+            .navbar-menu .right-link {
+                margin-left: 0;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 24px;
+            }
+            
+            /* --- NUEVO: Responsive Stats --- */
+            .stat-item h3 {
+                font-size: 2.2em;
+            }
+            .stat-item p {
+                font-size: 1em;
+            }
+        }
     </style>
 </head>
 
@@ -847,6 +1088,65 @@
                     <button class="compare-btn" onclick="toggleComparison(this)">
                         Añadir a Comparar
                     </button>
+                </div>
+            </div>
+        </section>
+<section class="reviews-section">
+            <h2>Qué dicen nuestros clientes</h2>
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"¡Excelente atención! Compré una notebook y me asesoraron en todo momento. El envío llegó en 24hs. Totalmente recomendados."</p>
+                    <div class="author">- María G.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Los mejores precios que encontré en componentes de PC. El monitor ultrawide que compré es una maravilla y llegó perfecto."</p>
+                    <div class="author">- Juan Pablo R.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Ya van varias compras que hago para mi empresa en IT HYT. Siempre serios, rápidos y con garantía oficial. Confianza total."</p>
+                    <div class="author">- TecnoSoluciones SRL</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <h2>Nuestros Números</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>+15000</h3>
+                    <p>Ventas en 2025</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-users"></i>
+                    <h3>1200</h3>
+                    <p>Clientes Satisfechos</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-building"></i>
+                    <h3>+45</h3>
+                    <p>Empresas Confían en Nosotros</p>
                 </div>
             </div>
         </section>
